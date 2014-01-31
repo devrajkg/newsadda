@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+<script src="/socket.io/socket.io.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	 
+<body onload = "onload_init()">
+<script>
+//var socket = io.connect('http://10.239.61.71:3000');
+var socket = io.connect('http://localhost:3000');
+var address = new Array();
+
+socket.on('message', function(message){
+				console.log('received message:', message);
+				var oNewP = document.getElementById("middlecontainer");
+				oNewP.innerHTML = "";
+				printtHeadlines(message);
+});
+socket.on('district', function(message){
+				console.log('received message:', message);
+				var oNewP = document.getElementById("rightcontainer2");
+				oNewP.innerHTML = "";
+				//oNewP.innerHTML = message;
+				printthecontentdistrict(message);
+});
+socket.on('columnist', function(message){
+				console.log('received message:', message);
+				var oNewP2 = document.getElementById("rightcontainer");
+				oNewP2.innerHTML = "";
+				printthecontent2(message);
+});
+function onload_init()
+{
+	socket.emit('district',"Davanagere");
+	// if (navigator.geolocation)    {
+	// 	navigator.geolocation.getCurrentPosition(showPosition);
+ //    }
+}
+function sidebuttonClicked(ID)
+{
+	socket.emit('sideOptions',ID);
+	// if (navigator.geolocation)    {
+	// 	navigator.geolocation.getCurrentPosition(showPosition);
+ //    }
+}
+function showPosition(position)
+{
+	var url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=false";
+    jQuery.getJSON(url, function (json) {
+        Create_Address(json);
+    });   
+}
+
+function printtHeadlines(message){
+	for(var i=0;i<10;i++)	{
+		var oNewP = document.getElementById("middlecontainer");
+	    var str = message[i].title;
+		var result = str.link(message[i].url);
+		oNewP.innerHTML += result;
+		oNewP.innerHTML += "<br>";
+		oNewP.innerHTML += message[i].paper_source;
+		oNewP.innerHTML += " -";
+	
+		if(message[i].time_ago != null)		{
+			oNewP.innerHTML += "  ";
+   			oNewP.innerHTML += message[i].time_ago;
+		}
+   		oNewP.innerHTML += "		";
+		oNewP.innerHTML += message[i].summary.substring(0,400);
+			 oNewP.innerHTML += "<br>";
+		// oNewP.innerHTML += message[i].distance_in_seconds;
+		// oNewP.innerHTML += "<br>";
+    } 
+}
+function printthecontent(message){
+	for(var i=0;i<6;i++)	{
+		var oNewP = document.getElementById("middlecontainer");
+	    var str = message.items[i].title;
+		var result = str.link(message.items[i].url);
+		oNewP.innerHTML += result;
+		oNewP.innerHTML += "<br>";
+		if(message.items[i].published_at != null)		{
+   			var	int_u = parseInt(message.items[i].published_at);
+   			int_u = int_u /1000;
+   			var date = new Date(int_u*1000);
+   			oNewP.innerHTML += date;
+		}
+		if(message.items[i].time_ago != null)		{
+			oNewP.innerHTML += "  ";
+   			oNewP.innerHTML += message.items[i].time_ago;
+		}
+   		oNewP.innerHTML += "<br>";
+		oNewP.innerHTML += message.title;
+		oNewP.innerHTML += message.items[i].summary;
+		oNewP.innerHTML += "<br>";
+    } 
+}
+function printthecontent2(message){
+	for(var i=0;i<7;i++)	{
+		var oNewP = document.getElementById("rightcontainer");
+	    var str = message.items[i].title;
+		var result = str.link(message.items[i].url);
+		oNewP.innerHTML += result;
+		oNewP.innerHTML += "<br>";
+		oNewP.innerHTML += message.items[i].paper_source;
+		// oNewP.innerHTML += " -";
+		// oNewP.innerHTML += message.items[i].summary.substring(0,300);
+		 oNewP.innerHTML += "<br>";
+    } 
+}
+function printthecontentdistrict(message){
+	for(var i=0;i<10;i++)	{
+		var oNewP = document.getElementById("rightcontainer2");
+	    var str = message[i].title;
+		var result = str.link(message[i].url);
+		oNewP.innerHTML += result;
+		oNewP.innerHTML += "<br>";
+		oNewP.innerHTML += message[i].paper_source;
+		oNewP.innerHTML += " -";
+	
+		if(message[i].time_ago != null)		{
+			oNewP.innerHTML += "  ";
+   			oNewP.innerHTML += message[i].time_ago;
+		}
+  //  		oNewP.innerHTML += "		";
+		// oNewP.innerHTML += message[i].summary.substring(0,400);
+		 	 oNewP.innerHTML += "<br><br>";
+		// oNewP.innerHTML += message[i].distance_in_seconds;
+		// oNewP.innerHTML += "<br>";
+    } 
+}
+/*
+  * Create an address out of the json 
+  */
+  function Create_Address(json) {
+    if (!check_status(json)) // If the json file's status is not ok, then return
+    {
+        return 0;
+    }
+	address['country'] = google_getCountry(json);
+	address['province'] = google_getProvince(json);
+	address['city'] = google_getCity(json);
+	address['street'] = google_getStreet(json);
+	address['postal_code'] = google_getPostalCode(json);
+	address['country_code'] = google_getCountryCode(json);
+	address['formatted_address'] = google_getAddress(json);
+	address['district'] = google_getDistrict(json);
+	//console.log(address['formatted_address'])
+	socket.emit('district',address['district']);
+	//socket.emit('district',"Davanagere");
+  }
+  /*
+  * Given Google Geocode json, return the value in the specified element of the array
+  */
+
+  function google_getCountry(json) {
+    return Find_Long_Name_Given_Type("country", json["results"][0]["address_components"], false);
+  }
+  function google_getProvince(json) {
+    return Find_Long_Name_Given_Type("administrative_area_level_1", json["results"][0]["address_components"], true);
+  }
+   function google_getDistrict(json) {
+    return Find_Long_Name_Given_Type("administrative_area_level_2", json["results"][0]["address_components"], true);
+  }
+  function google_getCity(json) {
+    return Find_Long_Name_Given_Type("locality", json["results"][0]["address_components"], false);
+  }
+  function google_getStreet(json) {
+    return Find_Long_Name_Given_Type("street_number", json["results"][0]["address_components"], false) + ' ' + Find_Long_Name_Given_Type("route", json["results"][0]["address_components"], false);
+  }
+  function google_getPostalCode(json) {
+    return Find_Long_Name_Given_Type("postal_code", json["results"][0]["address_components"], false);
+  }
+  function google_getCountryCode(json) {
+    return Find_Long_Name_Given_Type("country", json["results"][0]["address_components"], true);
+  }
+  function google_getAddress(json) {
+    return json["results"][0]["formatted_address"];
+  } 
+ /* 
+  * Check if the json data from Google Geo is valid 
+  */
+  function check_status(json) {
+    if (json["status"] == "OK") return true;
+    return false;
+  }
+  /*
+  * Searching in Google Geo json, return the long name given the type. 
+  * (if short_name is true, return short name)
+  */
+
+  function Find_Long_Name_Given_Type(t, a, short_name) {
+    var key;
+    for (key in a ) {
+      if ((a[key]["types"]).indexOf(t) != -1) {
+        if (short_name) 
+          return a[key]["short_name"];
+        return a[key]["long_name"];
+      }
+    }
+  }
+</script>
+<style>
+div.content1
+{
+font:25px times,sans-serif;
+}
+</style>
+<div id="container">
+<div id="header" style="background-color:#DCDCDC;">
+<h1 style="margin-bottom:10;color:#FFFFFF;text-align:center;font: tunga">ನ್ಯೂಸ್ ಅಡ್ಡ</h1></div>
+<div id="side_menu">
+
+<a href="/state" onclick="sidebuttonClicked(1);" class="navitem">ರಾಜ್ಯ</a><br>
+<a href="/national" onclick="sidebuttonClicked(2);" class="navitem">ರಾಷ್ಟ್ರೀಯ</a><br>
+<a href="/commerce" onclick="sidebuttonClicked(3);" class="navitem">ವಾಣಿಜ್ಯ</a><br>
+<a href="/sports" onclick="sidebuttonClicked(4);" class="navitem">ಕ್ರೀಡೆ</a><br>
+<a href="/technology" onclick="sidebuttonClicked(5);" class="navitem">ತಂತ್ರಜ್ಞಾನ</a><br>
+<a href="/columns" onclick="sidebuttonClicked(6);" class="navitem">ಅಂಕಣಗಳು</a><br>
+<a href="/movies" onclick="sidebuttonClicked(7);" class="navitem">ಸಿನಿಮಾ</a><br>
+<a href="/special" onclick="sidebuttonClicked(8);" class="navitem">ವಿಶೇಷ</a><br>
+<a href="/science" onclick="sidebuttonClicked(9);" class="navitem">ವಿಜ್ಞಾನ</a><br>
+</div>
+
+<div id="middlecontainer" ></div>
+
+<div id="rightcontainerMaincontainer">
+<h2 style="background-color:#F0F0F0;color:#000000;text-align:center;font: tunga:">ಅಂಕಣಗಳು</h2>
+<div id="rightcontainer" ></div>
+</div>
+<div id="rightcontainerMaincontainer2">
+<h2 style="background-color:#F0F0F0;color:#000000;text-align:center;font: tunga:">ಜಿಲ್ಲೆ</h2>	
+<div id="rightcontainer2"> </div>
+</div>
+<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">Devraj Kuruva</div>
+
+</div>
+</body>
+</head>
+</html>

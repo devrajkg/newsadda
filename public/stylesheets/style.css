@@ -1,0 +1,60 @@
+/*body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}*/
+a:link { text-decoration: none, font-size: 1em; }
+a:hover { text-decoration: none; font-size: 1em; }
+/*a {
+  color: #00B7FF;
+}*/
+html,body{
+    height:100%;    
+    margin:0;
+    padding:0;
+    border:0;
+}
+
+#side_menu
+{
+	/*background-color:#F0F8FF;height:600px;width:250px;float:left;font:28px tunga;color:red;
+	background-color:white;height:1500px;width:175px;font:16px tunga;
+	margin:10;*/
+	background-color:white;width:10%;text-align:top;font:16px tunga;float:left;height: 1500px;
+	/*position: absolute; width: 175px; height: 1500px; margin: 0; margin-top: 0px; border-right: 1px solid #C6EC8C; font-weight: normal; */
+}
+#middlecontainer
+{
+	
+	/* background-color:white;height:1000px;width:950px;float:left;font:28px tunga;
+	background-color:white;height:1500px;width:1050px;float:left;font:14px tunga;*/
+	background-color:white;width:70%;text-align:top;font:16px tunga;float:left;height: 100%;
+}
+#rightcontainer
+{
+	/*background: ckground-color:#FF9900;height:1000px;width:260px;float:right;font:28px tunga;
+	background-color:white;height:750px;width:300px;float:right;font:14px tunga
+	background-color:white;height:50%;width:20%;text-align:top;font:16px tunga;float:right; */
+	float:left;
+    width: 20%;
+    height: 100%;
+    background: white;
+    text-align:top;
+    font:16px tunga;
+}
+}
+#rightcontainer2
+{
+	/*background-color:white;height:50%;width:300px;float:right;font:16px tunga;text-align:top;*/
+	float:left;
+    width: 20%;
+    height: 100%;
+    background: white;
+    text-align:top;
+    font:16px tunga;
+}
+/*<div id="content1" style="background-color:white;height:800px;width:750px;float:left;font:18px tunga"></div>
+
+<div id="content2" style="background-color:#F0F8FF;height:800px;width:300px;float:right;font:18px tunga"></div>
+
+<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">Devraj Kuruva</div>*/
+
