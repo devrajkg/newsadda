@@ -5,15 +5,21 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	 
 <div id="header" style="background-color:#FFFFFF;">
-<h1 style="margin-bottom:20;color:#000000;text-align:center;font: tunga;min-height: 45px;" img src="/images/newsadda1.JPEG">ನ್ಯೂಸ್ ಅಡ್ಡ</h1></div>
-<img src="/images/newsadda1.JPEG" alt="Smiley face">
+<h1 style="margin-bottom:20;color:#000000;text-align:center;font: tunga;min-height: 45px;">ನ್ಯೂಸ್ ಅಡ್ಡ</h1></div>
+
 </head>
 <body onload = "onload_init()">
 <script>
 //var socket = io.connect('http://10.239.61.71:3000');
 var socket = io.connect('http://localhost:3000');
 var address = new Array();
-
+socket.on('no_of_clicks', function(message){
+				console.log('received message:', message);
+				var oNewP = document.getElementById("footer");
+				oNewP.innerHTML += "--";
+				oNewP.innerHTML += message;
+				
+});
 socket.on('message', function(message){
 				console.log('received message:', message);
 				var oNewP = document.getElementById("middlecontainer");
@@ -78,7 +84,7 @@ function printtHeadlines(message){
 }
 
 function printthecontent2(message){
-	for(var i=0;i<7;i++)	{
+	for(var i=0;i<10;i++)	{
 		var oNewP = document.getElementById("rightcontainer");
 	    var str = message.items[i].title;
 		var result = str.link(message.items[i].url);

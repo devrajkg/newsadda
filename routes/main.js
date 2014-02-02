@@ -5,37 +5,37 @@ var prajavani = {
 		"national":"http://www.prajavani.net/taxonomy/term/31/all/feed",
 		"foreign":"http://www.prajavani.net/taxonomy/term/33/all/feed",
 		"sports":"http://www.prajavani.net/taxonomy/term/64/all/feed",
-		"bengalore":"http://www.prajavani.net/taxonomy/term/32/all/feed",
+		"Bangalore":"http://www.prajavani.net/taxonomy/term/32/all/feed",
 		"Udupi":"http://www.prajavani.net/taxonomy/term/47/all/feed",
-		"chamarajanagara":"http://www.prajavani.net/taxonomy/term/43/all/feed",
-		"bellary":"http://www.prajavani.net/taxonomy/term/60/all/feed",
-		"shimoga":"http://www.prajavani.net/taxonomy/term/37/all/feed",
-		"bidar":"http://www.prajavani.net/taxonomy/term/39/all/feed",
-		"uttarakannada":"http://www.prajavani.net/taxonomy/term/56/all/feed",
-		"chikkaballapura":"http://www.prajavani.net/taxonomy/term/35/all/feed",
-		"bagalkote":"http://www.prajavani.net/taxonomy/term/61/all/feed",
-		"mysore":"http://www.prajavani.net/taxonomy/term/46/all/feed",
-		"dakshinakannada":"http://www.prajavani.net/taxonomy/term/53/all/feed",
-		"kodagu":"http://www.prajavani.net/taxonomy/term/44/all/feed",
-		"chikkamagaluru":"http://www.prajavani.net/taxonomy/term/49/all/feed",
-		"bijapura":"http://www.prajavani.net/taxonomy/term/59/all/feed",
+		"Chamarajanagar":"http://www.prajavani.net/taxonomy/term/43/all/feed",
+		"Bellary":"http://www.prajavani.net/taxonomy/term/60/all/feed",
+		"Shivamogga":"http://www.prajavani.net/taxonomy/term/37/all/feed",
+		"Bidar":"http://www.prajavani.net/taxonomy/term/39/all/feed",
+		"Uttara Kannada":"http://www.prajavani.net/taxonomy/term/56/all/feed",
+		"Chikballapur":"http://www.prajavani.net/taxonomy/term/35/all/feed",
+		"Bagalkot":"http://www.prajavani.net/taxonomy/term/61/all/feed",
+		"Mysore":"http://www.prajavani.net/taxonomy/term/46/all/feed",
+		"Dakshina Kannada":"http://www.prajavani.net/taxonomy/term/53/all/feed",
+		"Kodagu":"http://www.prajavani.net/taxonomy/term/44/all/feed",
+		"Chikmagalur":"http://www.prajavani.net/taxonomy/term/49/all/feed",
+		"Bijapur":"http://www.prajavani.net/taxonomy/term/59/all/feed",
 		"yadagiri":"http://www.prajavani.net/taxonomy/term/52/all/feed",
-		"koppala":"http://www.prajavani.net/taxonomy/term/50/all/feed",
-		"chitradurga":"http://www.prajavani.net/taxonomy/term/36/all/feed",
-		"bengalore":"http://www.prajavani.net/taxonomy/term/32/all/feed",
-		"ramanagara":"http://www.prajavani.net/taxonomy/term/66/all/feed",
-		"kolara":"http://www.prajavani.net/taxonomy/term/65/all/feed",
-		"tumkuru":"http://www.prajavani.net/taxonomy/term/34/all/feed",
-		"bengalorerural":"http://www.prajavani.net/taxonomy/term/48/all/feed",
-		"raichuru":"http://www.prajavani.net/taxonomy/term/41/all/feed",
-		"gadag":"http://www.prajavani.net/taxonomy/term/58/all/feed",
+		"Koppal":"http://www.prajavani.net/taxonomy/term/50/all/feed",
+		"Chitradurga":"http://www.prajavani.net/taxonomy/term/36/all/feed",
+		"Ramanagara":"http://www.prajavani.net/taxonomy/term/66/all/feed",
+		"Kolar":"http://www.prajavani.net/taxonomy/term/65/all/feed",
+		"Tumkur":"http://www.prajavani.net/taxonomy/term/34/all/feed",
+		"Bangalore Rural":"http://www.prajavani.net/taxonomy/term/48/all/feed",
+		"Raichur":"http://www.prajavani.net/taxonomy/term/41/all/feed",
+		"Gadag":"http://www.prajavani.net/taxonomy/term/58/all/feed",
 		"Davanagere":"http://www.prajavani.net/taxonomy/term/38/all/feed",
-		"belagavi":"http://www.prajavani.net/taxonomy/term/55/all/feed",
-		"haveri":"http://www.prajavani.net/taxonomy/term/57/all/feed",
+		"Belgaum":"http://www.prajavani.net/taxonomy/term/55/all/feed",
+		"Haveri":"http://www.prajavani.net/taxonomy/term/57/all/feed",
 		"Gulbarga":"http://www.prajavani.net/taxonomy/term/40/all/feed",
+		"Yadgir":"http://www.prajavani.net/taxonomy/term/40/all/feed",
 		"Dharwad":"http://www.prajavani.net/taxonomy/term/54/all/feed",
 		"Mandya":"http://www.prajavani.net/taxonomy/term/63/all/feed",
-		"Hasana":"http://www.prajavani.net/taxonomy/term/45/all/feed",
+		"Hassan":"http://www.prajavani.net/taxonomy/term/45/all/feed",
 		"Sapthahikapuravani":"http://www.prajavani.net/taxonomy/term/76/all/feed",
 		"kamanabillu":"http://www.prajavani.net/taxonomy/term/84/all/feed",
 		"karnatakadarshana":"http://www.prajavani.net/taxonomy/term/77/all/feed",
@@ -78,31 +78,34 @@ var kannadaprabha = {
 		"Bollywood":"http://www.kannadaprabha.com/sectionrss-180.html",
 		"Mysore":"http://www.kannadaprabha.com/sectionrss-130.html",
 		"Bangalore":"http://www.kannadaprabha.com/sectionrss-131.html",
-		"BangaloreRural":"http://www.kannadaprabha.com/sectionrss-132.html",
+		"Bangalore Rural":"http://www.kannadaprabha.com/sectionrss-132.html",
+		"Ramanagara":"http://www.kannadaprabha.com/sectionrss-132.html",
 		"Bagalkot":"http://www.kannadaprabha.com/sectionrss-133.html",
 		"Belgaum":"http://www.kannadaprabha.com/sectionrss-134.html",
-		"Bellaryಿ":"http://www.kannadaprabha.com/sectionrss-135.html",
+		"Bellary":"http://www.kannadaprabha.com/sectionrss-135.html",
 		"Bidar":"http://www.kannadaprabha.com/sectionrss-136.html",
 		"Bijapur":"http://www.kannadaprabha.com/sectionrss-137.html",
 		"Chamarajanagar":"http://www.kannadaprabha.com/sectionrss-138.html",
-		"Chikkamagalur":"http://www.kannadaprabha.com/sectionrss-139.html",
+		"Chikmagalur":"http://www.kannadaprabha.com/sectionrss-139.html",
 		"Chitradurga":"http://www.kannadaprabha.com/sectionrss-140.html",
-		"DakshinaKannada":"http://www.kannadaprabha.com/sectionrss-141.html",
+		"Dakshina Kannada":"http://www.kannadaprabha.com/sectionrss-141.html",
 		"Davanagere":"http://www.kannadaprabha.com/sectionrss-142.html",
 		"Dharwad":"http://www.kannadaprabha.com/sectionrss-143.html",
 		"Gadag":"http://www.kannadaprabha.com/sectionrss-144.html",
 		"Gulbarga":"http://www.kannadaprabha.com/sectionrss-145.html",
+		"Yadgir":"http://www.kannadaprabha.com/sectionrss-145.html",
 		"Hassan":"http://www.kannadaprabha.com/sectionrss-146.html",
 		"Haveri":"http://www.kannadaprabha.com/sectionrss-147.html",
 		"Kodagu":"http://www.kannadaprabha.com/sectionrss-148.html",
 		"Kolar":"http://www.kannadaprabha.com/sectionrss-149.html",
+		"Chikballapur":"http://www.kannadaprabha.com/sectionrss-149.html",
 		"Koppal":"http://www.kannadaprabha.com/sectionrss-150.html",
 		"Mandya":"http://www.kannadaprabha.com/sectionrss-151.html",
 		"Raichur":"http://www.kannadaprabha.com/sectionrss-152.html",
-		"shimoga":"http://www.kannadaprabha.com/sectionrss-153.html",
+		"Shivamogga":"http://www.kannadaprabha.com/sectionrss-153.html",
 		"Tumkur":"http://www.kannadaprabha.com/sectionrss-154.html",
 		"Udupi":"http://www.kannadaprabha.com/sectionrss-155.html",
-		"UttaraKannada":"http://www.kannadaprabha.com/sectionrss-156.html",
+		"Uttara Kannada":"http://www.kannadaprabha.com/sectionrss-156.html",
 		"Sapthahikaprabha":"http://www.kannadaprabha.com/sectionrss-158.html",
 		"by2coffee":"http://www.kannadaprabha.com/sectionrss-160.html",
 		"ArtLiterature":"http://www.kannadaprabha.com/sectionrss-161.html",
@@ -136,6 +139,7 @@ var others = {
 	"karnatakainfoline":"http://karnatakainfoline.com/feed"
 	}
 
+var no_of_clicks =0;
 var finalObj =[];	
 var feedready = 0;
 var finalCommerceObj =[];	
@@ -154,6 +158,8 @@ var finalstateObj =[];
 var feedstateready = 0;
 var finalnationalObj =[];	
 var feednationalready = 0;
+var finalcolumnObj =[];	
+var feedcolumnready = 0;
 
 var finalDistObj =[];	
 var feedDistready = 0;
@@ -230,34 +236,34 @@ science[1] = kannadaprabha.ScienceTechnology;
 science[2] = udayavani.sports;
 
 exports.init = function(){
+	no_of_clicks = 0;
 	getfeed(weblinks);
+	getcolumnsfeed();
 	getCommercefeed();
 	getstatefeed();
 	getnationalfeed();
 	getmoviesfeed();
 	getsciencefeed();
 	getsportsfeed();
+
 	//getspecialfeed();
 	// setInterval(function () {
 	// getfeed(weblinks);
  //  }, 500000);
 }
 exports.newsfeed = function(socket){
-	// link_count = weblinks.length;
-	// for (var i=0; i < weblinks.length; i++) {
- //   	feedlinks[i] = weblinks[i]; 
-	// }
-	
+
+no_of_clicks++;
+send_no_of_clicks(socket);
  	sendFeed(socket);
-	doColumnist(socket);
+ 	sendcolumnFeed(socket);
+	//doColumnist(socket);
   // setInterval(function () {
   // 	//doQuery(socket);
   // 	sendFeed(socket);
   	
   // }, 5000);
-     	  setInterval(function () {
-  	  doColumnist(socket);
-      }, 60000);
+
  socket.on('district', function (district) {
  	console.log("inside district -->",district);
  	getDistrictfeed(socket,district);
@@ -267,6 +273,7 @@ socket.on('sideOptions', function (ID) {
  	console.log("inside state ------------------->",ID);
  	if(ID == 1)
  	{
+ 		//sendcolumnFeed(socket);
 		sendstateFeed(socket);  		
    	}
    	else if(ID == 2)
@@ -323,6 +330,10 @@ function sendFeed(socket)
    	   	socket.emit('message',finalObj);
    }
 }
+function send_no_of_clicks(socket)
+{
+	socket.emit('no_of_clicks',no_of_clicks);
+}
 function sendCommerceFeed(socket)
 {
 	console.log("Inside Start sendCommerceFeed function");
@@ -370,6 +381,14 @@ function sendscienceFeed(socket)
 	console.log("Inside Start sendCommerceFeed function");
    if(feedCommerceready == 1)   {
    	   	socket.emit('message',finalscienceObj);
+   }
+}
+
+function sendcolumnFeed(socket)
+{
+	console.log("Inside Start sendcolumnFeed function");
+   if(feedcolumnready == 1)   {
+   	   	socket.emit('columnist',finalcolumnObj);
    }
 }
 
@@ -550,6 +569,35 @@ function getmoviesfeed()
 });
 }
 }
+
+function getcolumnsfeed()
+{
+	console.log("Inside Start getColumnsfeed function");
+	finalcolumnObj =[];
+	feedcolumnready = 0;
+	var j = 0;
+	for(var i =0 ;i< columnistlinks.length;i++)	{
+		parser.parseURL(columnistlinks[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalcolumnObj = finalcolumnObj.concat(out.items[0]);
+	    	finalcolumnObj = finalcolumnObj.concat(out.items[1]);
+	    	finalcolumnObj = finalcolumnObj.concat(out.items[2]);
+	    	finalcolumnObj = finalcolumnObj.concat(out.items[4]);
+	    	finalcolumnObj = finalcolumnObj.concat(out.items[5]);
+	    	finalcolumnObj = finalcolumnObj.concat(out.items[6]);
+   	}
+   if(j == columnistlinks.length)  {
+   	//console.log("Inside Start getColumnsfeed function 3333");
+   	finalcolumnObj = arrysort(finalcolumnObj);
+   	feedcolumnready = 1;
+   }
+});
+}
+}
+
 function getfeed(feedlinks)
 {
 	console.log("Inside Start getfeed function");
