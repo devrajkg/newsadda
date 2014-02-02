@@ -4,22 +4,13 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 <script src="/socket.io/socket.io.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	 
-
-<div class="header">
- <center> <img src="/images/newsadda.jpg" alt="logo" ></center>
- 
-</div>
+<div id="header" style="background-color:#FFFFFF;">
+<h1 style="margin-bottom:20;color:#000000;text-align:center;font: tunga;min-height: 45px;">ನ್ಯೂಸ್ ಅಡ್ಡ</h1></div>
 
 </head>
 <body onload = "onload_init()">
 <script>
-//<h1 style="margin-bottom:20;color:#000000;text-align:center;font: tunga;min-height: 45px;">ನ್ಯೂಸ್ ಅಡ್ಡ</h1></div>
 //var socket = io.connect('http://10.239.61.71:3000');
-// <div id="header" style="background-color:#FFFFFF;">
-
-// <h1 id="logo">
-//     <a href="">N</a>
-// </h1>
 var socket = io.connect('http://localhost:3000');
 var address = new Array();
 socket.on('no_of_clicks', function(message){
@@ -50,10 +41,11 @@ socket.on('columnist', function(message){
 });
 function onload_init()
 {
-//	socket.emit('district',"Davanagere");
-	if (navigator.geolocation)    {
-		navigator.geolocation.getCurrentPosition(showPosition);
-    }
+	socket.emit('sideOptions',5);
+	socket.emit('district',"Davanagere");
+	// if (navigator.geolocation)    {
+	// 	navigator.geolocation.getCurrentPosition(showPosition);
+ //    }
 }
 function sidebuttonClicked(ID)
 {

@@ -37,15 +37,15 @@ if ('development' == app.get('env')) {
 
 app.get('/', parserview.newsadda);
 app.get('/commerce', parserview.commerce);
- app.get('/state', parserview.state);
- app.get('/national', parserview.national);
- app.get('/sports', parserview.sports);
- app.get('/movies', parserview.movies);
- app.get('/columns', parserview.columns);
- app.get('/science', parserview.science);
- app.get('/special', parserview.special);
-//app.get('/agriculture', parserview.agriculture);
-
+app.get('/state', parserview.state);
+app.get('/national', parserview.national);
+app.get('/sports', parserview.sports);
+app.get('/movies', parserview.movies);
+app.get('/columns', parserview.columns);
+app.get('/science', parserview.science);
+app.get('/special', parserview.special);
+app.get('/agriculture', parserview.agriculture);
+app.get('/foreign', parserview.foreign);
 
 //app.get('/ex', parserview.ex);
 app.get('/ex', parserview.ex);

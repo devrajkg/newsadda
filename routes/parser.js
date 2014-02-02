@@ -34,3 +34,9 @@ exports.special = function(req, res){
 exports.sports = function(req, res){
   res.render('sports', { title: 'Hello commerce' });
 };
+exports.agriculture = function(req, res){
+  res.render('agriculture', { title: 'Hello agriculture' });
+};
+exports.foreign = function(req, res){
+  res.render('foreign', { title: 'Hello foreign' });
+};

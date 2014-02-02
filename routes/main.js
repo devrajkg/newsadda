@@ -160,6 +160,10 @@ var finalnationalObj =[];
 var feednationalready = 0;
 var finalcolumnObj =[];	
 var feedcolumnready = 0;
+var finalagricultureObj =[];	
+var feedagricultureready = 0;
+var finalforeignObj =[];	
+var feedaforeignready = 0;
 
 var finalDistObj =[];	
 var feedDistready = 0;
@@ -175,7 +179,7 @@ weblinks[4] = udayavani.national;
 weblinks[5] = kannadaprabha.TopNews;
 weblinks[6] = prajavani.state;
 //weblinks[7] = others.suvarnanews;
-
+	
 link_count = weblinks.length;
 	// for (var i=0; i < weblinks.length; i++) {
  //   feedlinks[i] = weblinks[i]; }
@@ -231,26 +235,33 @@ special[1] = kannadaprabha.HealthLifestyle;
 special[2] = udayavani.puravanigalu;
 
 var science = new Array();
-science[0] = prajavani.sports;
+science[0] = prajavani.technology;
 science[1] = kannadaprabha.ScienceTechnology;
-science[2] = udayavani.sports;
+
+var foreign =  new Array();
+foreign[0] = udayavani.international;
+foreign[1] = prajavani.foreign;
+foreign[2] = kannadaprabha.HoranaduKannadiga;
+
 
 exports.init = function(){
 	no_of_clicks = 0;
 	getfeed(weblinks);
 	getcolumnsfeed();
+	getagriculturefeed();
 	getCommercefeed();
 	getstatefeed();
 	getnationalfeed();
 	getmoviesfeed();
 	getsciencefeed();
 	getsportsfeed();
-
+	getforeignfeed();
+	getspecialfeed();
 	//getspecialfeed();
 	// setInterval(function () {
 	// getfeed(weblinks);
  //  }, 500000);
-}
+}	
 exports.newsfeed = function(socket){
 
 no_of_clicks++;
@@ -266,7 +277,14 @@ send_no_of_clicks(socket);
 
  socket.on('district', function (district) {
  	console.log("inside district -->",district);
- 	getDistrictfeed(socket,district);
+ 	if(district == 'Bangalore' || district == 'Shivamogga')
+ 	{
+ 		getDistrictfeed(socket,district);
+ 	}
+ 	else
+ 	{
+ 		getDistrictfeed(socket,'Davanagere');
+ 	}
  	});
 
 socket.on('sideOptions', function (ID) {
@@ -290,11 +308,11 @@ socket.on('sideOptions', function (ID) {
    	}
    	else if(ID == 5)
    	{
- 			sendtechnologyFeed(socket);
+ 			sendforeignFeed(socket);
    	}
    	else if(ID == 6)
    	{
- 	 		getfeed(agriculture);
+ 	 		sendagricultureFeed(socket);
    	}
    	else if(ID == 7)
    	{
@@ -341,13 +359,7 @@ function sendCommerceFeed(socket)
    	   	socket.emit('message',finalCommerceObj);
    }
 }
-function sendCommerceFeed(socket)
-{
-	console.log("Inside Start sendCommerceFeed function");
-   if(feedCommerceready == 1)   {
-   	   	socket.emit('message',finalCommerceObj);
-   }
-}
+
 function sendstateFeed(socket)
 {
 	console.log("Inside Start sendCommerceFeed function");
@@ -376,6 +388,13 @@ function sendmoviesFeed(socket)
    	   	socket.emit('message',finalmoviesObj);
    }
 }
+function sendforeignFeed(socket)
+{
+	console.log("Inside Start sendCommerceFeed function");
+   if(feedforeignready == 1)   {
+   	   	socket.emit('message',finalforeignObj);
+   }
+}
 function sendscienceFeed(socket)
 {
 	console.log("Inside Start sendCommerceFeed function");
@@ -389,6 +408,19 @@ function sendcolumnFeed(socket)
 	console.log("Inside Start sendcolumnFeed function");
    if(feedcolumnready == 1)   {
    	   	socket.emit('columnist',finalcolumnObj);
+   }
+}
+
+function sendagricultureFeed(socket)
+{
+   if(feedagricultureready == 1)   {
+   	   	socket.emit('message',finalagricultureObj);
+   }
+}
+function sendspecialFeed(socket)
+{
+   if(feedspecialready == 1)   {
+   	   	socket.emit('message',finalspecialObj);
    }
 }
 
@@ -570,6 +602,36 @@ function getmoviesfeed()
 }
 }
 
+function getforeignfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalforeignObj =[];
+	feedforeignready = 0;
+	var j = 0;
+	for(var i =0 ;i< foreign.length;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(foreign[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalforeignObj = finalforeignObj.concat(out.items[0]);
+	    	finalforeignObj = finalforeignObj.concat(out.items[1]);
+	    	finalforeignObj = finalforeignObj.concat(out.items[2]);
+	    	finalforeignObj = finalforeignObj.concat(out.items[4]);
+	    	finalforeignObj = finalforeignObj.concat(out.items[5]);
+	    	finalforeignObj = finalforeignObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == foreign.length)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalforeignObj = arrysort(finalforeignObj);
+   	feedforeignready = 1;
+   }
+});
+}
+}
+
 function getcolumnsfeed()
 {
 	console.log("Inside Start getColumnsfeed function");
@@ -593,6 +655,59 @@ function getcolumnsfeed()
    	//console.log("Inside Start getColumnsfeed function 3333");
    	finalcolumnObj = arrysort(finalcolumnObj);
    	feedcolumnready = 1;
+   }
+});
+}
+}
+function getspecialfeed()
+{
+	console.log("Inside Start getspecialfeed function");
+	finalspecialObj =[];
+	feedspecialready = 0;
+	var j = 0;
+	for(var i =0 ;i< special.length;i++)	{
+		parser.parseURL(special[i], options, function(err, out){
+		if(out != null)    {
+    		console.log("concating special j = ",j++," ");
+//			j++;
+	     	finalspecialObj = finalspecialObj.concat(out.items[0]);
+	    	finalspecialObj = finalspecialObj.concat(out.items[1]);
+	    	finalspecialObj = finalspecialObj.concat(out.items[2]);
+	    	finalspecialObj = finalspecialObj.concat(out.items[4]);
+	    	finalspecialObj = finalspecialObj.concat(out.items[5]);
+	    	finalspecialObj = finalspecialObj.concat(out.items[6]);
+   	}
+   if(j == special.length)  {
+   	console.log("Inside Start getspecialsfeed function 3333");
+   	finalspecialObj = arrysort(finalspecialObj);
+   	feedspecialready = 1;
+   }
+});
+}
+}
+
+function getagriculturefeed()
+{
+	console.log("Inside Start getagriculturefeed function");
+	finalagricultureObj =[];
+	feedagricultureready = 0;
+	var j = 0;
+	for(var i =0 ;i< agriculture.length;i++)	{
+		parser.parseURL(agriculture[i], options, function(err, out){
+		if(out != null)    {
+    		console.log("concating agriculture j = ",j++," ");
+//			j++;
+	     	finalagricultureObj = finalagricultureObj.concat(out.items[0]);
+	    	finalagricultureObj = finalagricultureObj.concat(out.items[1]);
+	    	finalagricultureObj = finalagricultureObj.concat(out.items[2]);
+	    	finalagricultureObj = finalagricultureObj.concat(out.items[4]);
+	    	finalagricultureObj = finalagricultureObj.concat(out.items[5]);
+	    	finalagricultureObj = finalagricultureObj.concat(out.items[6]);
+   	}
+   if(j == agriculture.length)  {
+   	console.log("Inside Start getagriculturesfeed function 3333");
+   	finalagricultureObj = arrysort(finalagricultureObj);
+   	feedagricultureready = 1;
    }
 });
 }
@@ -627,6 +742,8 @@ function getfeed(feedlinks)
 });
 }
 }
+
+
 
 function getDistrictfeed(socket,district)
 {

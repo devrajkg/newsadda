@@ -4,12 +4,22 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 <script src="/socket.io/socket.io.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	 
+<div id="header" style="background-color:#FFFFFF;">
+<h1 style="margin-bottom:20;color:#000000;text-align:center;font: tunga;min-height: 45px;">ನ್ಯೂಸ್ ಅಡ್ಡ</h1></div>
+<img src="/images/newsadda.jpg">
+</head>
 <body onload = "onload_init()">
 <script>
 //var socket = io.connect('http://10.239.61.71:3000');
 var socket = io.connect('http://localhost:3000');
 var address = new Array();
-
+socket.on('no_of_clicks', function(message){
+				console.log('received message:', message);
+				var oNewP = document.getElementById("footer");
+				oNewP.innerHTML += "--";
+				oNewP.innerHTML += message;
+				
+});
 socket.on('message', function(message){
 				console.log('received message:', message);
 				var oNewP = document.getElementById("middlecontainer");
@@ -31,9 +41,8 @@ socket.on('columnist', function(message){
 });
 function onload_init()
 {
-//
-	socket.emit('sideOptions',3);
-		socket.emit('district',"Davanagere");
+	socket.emit('sideOptions',6);
+	socket.emit('district',"Shivamogga");
 	// if (navigator.geolocation)    {
 	// 	navigator.geolocation.getCurrentPosition(showPosition);
  //    }
@@ -54,57 +63,39 @@ function showPosition(position)
 }
 
 function printtHeadlines(message){
-	for(var i=0;i<10;i++)	{
+	for(var i=0;i<15;i++)	{
 		var oNewP = document.getElementById("middlecontainer");
 	    var str = message[i].title;
 		var result = str.link(message[i].url);
-		oNewP.innerHTML += result;
+		oNewP.innerHTML += result.bold();
 		oNewP.innerHTML += "<br>";
-		oNewP.innerHTML += message[i].paper_source;
+		oNewP.innerHTML += message[i].paper_source.fontsize(1).fontcolor('82829B');
 		oNewP.innerHTML += " -";
 	
 		if(message[i].time_ago != null)		{
 			oNewP.innerHTML += "  ";
-   			oNewP.innerHTML += message[i].time_ago;
+   			oNewP.innerHTML += message[i].time_ago.fontsize(1).fontcolor('82829B');;
 		}
-   		oNewP.innerHTML += "		";
-		oNewP.innerHTML += message[i].summary.substring(0,400);
-			 oNewP.innerHTML += "<br>";
-		// oNewP.innerHTML += message[i].distance_in_seconds;
+		oNewP.innerHTML += " ";
+		oNewP.innerHTML += message[i].summary.substring(0,400).fontsize(2);
+		oNewP.innerHTML += "<br>";
+			// oNewP.innerHTML += message[i].distance_in_seconds;
 		// oNewP.innerHTML += "<br>";
     } 
 }
-function printthecontent(message){
-	for(var i=0;i<6;i++)	{
-		var oNewP = document.getElementById("middlecontainer");
-	    var str = message.items[i].title;
-		var result = str.link(message.items[i].url);
-		oNewP.innerHTML += result;
-		oNewP.innerHTML += "<br>";
-		if(message.items[i].published_at != null)		{
-   			var	int_u = parseInt(message.items[i].published_at);
-   			int_u = int_u /1000;
-   			var date = new Date(int_u*1000);
-   			oNewP.innerHTML += date;
-		}
-		if(message.items[i].time_ago != null)		{
-			oNewP.innerHTML += "  ";
-   			oNewP.innerHTML += message.items[i].time_ago;
-		}
-   		oNewP.innerHTML += "<br>";
-		oNewP.innerHTML += message.title;
-		oNewP.innerHTML += message.items[i].summary;
-		oNewP.innerHTML += "<br>";
-    } 
-}
+
 function printthecontent2(message){
 	for(var i=0;i<7;i++)	{
 		var oNewP = document.getElementById("rightcontainer");
 	    var str = message.items[i].title;
 		var result = str.link(message.items[i].url);
-		oNewP.innerHTML += result;
+		oNewP.innerHTML += result.bold();
 		oNewP.innerHTML += "<br>";
-		oNewP.innerHTML += message.items[i].paper_source;
+		oNewP.innerHTML += message.items[i].paper_source.fontsize(2).fontcolor('82829B');
+		if(message[i].time_ago != null)		{
+			oNewP.innerHTML += "  ";
+   			oNewP.innerHTML += message[i].time_ago.fontsize(2).fontcolor('82829B');
+		}
 		// oNewP.innerHTML += " -";
 		// oNewP.innerHTML += message.items[i].summary.substring(0,300);
 		 oNewP.innerHTML += "<br>";
@@ -115,14 +106,14 @@ function printthecontentdistrict(message){
 		var oNewP = document.getElementById("rightcontainer2");
 	    var str = message[i].title;
 		var result = str.link(message[i].url);
-		oNewP.innerHTML += result;
+		oNewP.innerHTML += result.bold();
 		oNewP.innerHTML += "<br>";
-		oNewP.innerHTML += message[i].paper_source;
+		oNewP.innerHTML += message[i].paper_source.fontsize(2).fontcolor('82829B');
 		oNewP.innerHTML += " -";
 	
 		if(message[i].time_ago != null)		{
 			oNewP.innerHTML += "  ";
-   			oNewP.innerHTML += message[i].time_ago;
+   			oNewP.innerHTML += message[i].time_ago.fontsize(2).fontcolor('82829B');
 		}
   //  		oNewP.innerHTML += "		";
 		// oNewP.innerHTML += message[i].summary.substring(0,400);
@@ -209,19 +200,17 @@ font:25px times,sans-serif;
 }
 </style>
 <div id="container">
-<div id="header" style="background-color:#DCDCDC;">
-<h1 style="margin-bottom:10;color:#FFFFFF;text-align:center;font: tunga">ನ್ಯೂಸ್ ಅಡ್ಡ</h1></div>
+
 <div id="side_menu">
 
-<a href="/ex" onclick="sidebuttonClicked(1);" class="navitem">ರಾಜ್ಯ</a><br>
-<a href="#" onclick="sidebuttonClicked(2);" class="navitem">ರಾಷ್ಟ್ರೀಯ</a><br>
+<a href="/state" onclick="sidebuttonClicked(1);" class="navitem">ರಾಜ್ಯ</a><br>
+<a href="/national" onclick="sidebuttonClicked(2);" class="navitem">ರಾಷ್ಟ್ರೀಯ</a><br>
 <a href="/commerce" onclick="sidebuttonClicked(3);" class="navitem">ವಾಣಿಜ್ಯ</a><br>
-<a href="#" onclick="sidebuttonClicked(4);" class="navitem">ಕ್ರೀಡೆ</a><br>
-<a href="#" onclick="sidebuttonClicked(5);" class="navitem">ತಂತ್ರಜ್ಞಾನ</a><br>
-<a href="#" onclick="sidebuttonClicked(6);" class="navitem">ಅಂಕಣಗಳು</a><br>
-<a href="#" onclick="sidebuttonClicked(7);" class="navitem">ಸಿನಿಮಾ</a><br>
-<a href="#" onclick="sidebuttonClicked(8);" class="navitem">ವಿಶೇಷ</a><br>
-<a href="#" onclick="sidebuttonClicked(9);" class="navitem">ವಿಜ್ಞಾನ</a><br>
+<a href="/sports" onclick="sidebuttonClicked(4);" class="navitem">ಕ್ರೀಡೆ</a><br>
+<a href="/agriculture" onclick="sidebuttonClicked(6);" class="navitem">ಕೃಷಿ</a><br>
+<a href="/movies" onclick="sidebuttonClicked(7);" class="navitem">ಸಿನಿಮಾ</a><br>
+<a href="/special" onclick="sidebuttonClicked(8);" class="navitem">ವಿಶೇಷ</a><br>
+<a href="/science" onclick="sidebuttonClicked(9);" class="navitem">ವಿಜ್ಞಾನ/ತಂತ್ರಜ್ಞಾನ</a><br>
 </div>
 
 <div id="middlecontainer" ></div>
@@ -238,5 +227,5 @@ font:25px times,sans-serif;
 
 </div>
 </body>
-</head>
+
 </html>
