@@ -51,10 +51,13 @@ socket.on('columnist', function(message){
 });
 function onload_init()
 {
-//	socket.emit('district',"Davanagere");
-	if (navigator.geolocation)    {
-		navigator.geolocation.getCurrentPosition(showPosition);
-    }
+	socket.emit('district',"Haveri");
+var d = document.getElementById("distheading");
+d.innerHTML = "";
+d.innerHTML = "Davanagere ಜಿಲ್ಲೆ";
+	// if (navigator.geolocation)    {
+	// 	navigator.geolocation.getCurrentPosition(showPosition);
+ //    }
 }
 function sidebuttonClicked(ID)
 {
@@ -72,7 +75,7 @@ function showPosition(position)
 }
 
 function printtHeadlines(message){
-	for(var i=0;i<15;i++)	{
+	for(var i=0;i<20;i++)	{
 		var oNewP = document.getElementById("middlecontainer");
 	    var str = message[i].title;
 		var result = str.link(message[i].url);
@@ -88,23 +91,23 @@ function printtHeadlines(message){
 		oNewP.innerHTML += " ";
 		oNewP.innerHTML += message[i].summary.substring(0,400).fontsize(2);
 		oNewP.innerHTML += "<br>";
-		oNewP.innerHTML += "<br>";
+//		oNewP.innerHTML += "<br>";
 			// oNewP.innerHTML += message[i].distance_in_seconds;
 		// oNewP.innerHTML += "<br>";
     } 
 }
 
 function printthecontent(message){
-	for(var i=0;i<7;i++)	{
+	for(var i=0;i<10;i++)	{
 		var oNewP = document.getElementById("rightcontainer");
-	    var str = message.items[i].title;
-		var result = str.link(message.items[i].url);
+	    var str = message[i].title;
+		var result = str.link(message[i].url);
 		oNewP.innerHTML += result.bold();
 		oNewP.innerHTML += "<br>";
-		oNewP.innerHTML += message.items[i].paper_source.fontsize(2).fontcolor('82829B');
+		oNewP.innerHTML += message[i].paper_source.fontsize(1).fontcolor('82829B');
 		if(message[i].time_ago != null)		{
 			oNewP.innerHTML += "  ";
-   			oNewP.innerHTML += message[i].time_ago.fontsize(2).fontcolor('82829B');
+   			oNewP.innerHTML += message[i].time_ago.fontsize(1).fontcolor('82829B');
 		}
 		// oNewP.innerHTML += " -";
 		// oNewP.innerHTML += message.items[i].summary.substring(0,300);
@@ -112,22 +115,23 @@ function printthecontent(message){
     } 
 }
 function printthecontentdistrict(message){
+
 	for(var i=0;i<10;i++)	{
 		var oNewP = document.getElementById("rightcontainer2");
 	    var str = message[i].title;
 		var result = str.link(message[i].url);
 		oNewP.innerHTML += result.bold();
 		oNewP.innerHTML += "<br>";
-		oNewP.innerHTML += message[i].paper_source.fontsize(2).fontcolor('82829B');
+		oNewP.innerHTML += message[i].paper_source.fontsize(1).fontcolor('82829B');
 		oNewP.innerHTML += " -";
 	
 		if(message[i].time_ago != null)		{
 			oNewP.innerHTML += "  ";
-   			oNewP.innerHTML += message[i].time_ago.fontsize(2).fontcolor('82829B');
+   			oNewP.innerHTML += message[i].time_ago.fontsize(1).fontcolor('82829B');
 		}
   //  		oNewP.innerHTML += "		";
 		// oNewP.innerHTML += message[i].summary.substring(0,400);
-		 	 oNewP.innerHTML += "<br><br>";
+		 	 oNewP.innerHTML += "<br>";
 		// oNewP.innerHTML += message[i].distance_in_seconds;
 		// oNewP.innerHTML += "<br>";
     } 
@@ -149,8 +153,8 @@ function printthecontentdistrict(message){
 	address['formatted_address'] = google_getAddress(json);
 	address['district'] = google_getDistrict(json);
 	//console.log(address['formatted_address'])
-	socket.emit('district',address['district']);
-	//socket.emit('district',"Davanagere");
+	//socket.emit('district',address['district']);
+	socket.emit('district',"Davanagere");
   }
   /*
   * Given Google Geocode json, return the value in the specified element of the array
@@ -231,7 +235,7 @@ font:25px times,sans-serif;
 <div id="rightcontainer" ></div>
 </div>
 <div id="rightcontainerMaincontainer2">
-<h2 style="background-color:#F0F0F0;color:#000000;text-align:center;font: tunga:">ಜಿಲ್ಲೆ</h2>	
+<h2 id="distheading" style="background-color:#F0F0F0;color:#000000;text-align:center;font: tunga:">ಜಿಲ್ಲೆ</h2>	
 <div id="rightcontainer2"> </div>
 </div>
 <div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">Devraj Kuruva</div>

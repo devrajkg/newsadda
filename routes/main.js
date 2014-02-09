@@ -11,28 +11,27 @@ var prajavani = {
 		"Bellary":"http://www.prajavani.net/taxonomy/term/60/all/feed",
 		"Shivamogga":"http://www.prajavani.net/taxonomy/term/37/all/feed",
 		"Bidar":"http://www.prajavani.net/taxonomy/term/39/all/feed",
-		"Uttara Kannada":"http://www.prajavani.net/taxonomy/term/56/all/feed",
+		"Uttara_Kannada":"http://www.prajavani.net/taxonomy/term/56/all/feed",
 		"Chikballapur":"http://www.prajavani.net/taxonomy/term/35/all/feed",
 		"Bagalkot":"http://www.prajavani.net/taxonomy/term/61/all/feed",
 		"Mysore":"http://www.prajavani.net/taxonomy/term/46/all/feed",
-		"Dakshina Kannada":"http://www.prajavani.net/taxonomy/term/53/all/feed",
+		"Dakshina_Kannada":"http://www.prajavani.net/taxonomy/term/53/all/feed",
 		"Kodagu":"http://www.prajavani.net/taxonomy/term/44/all/feed",
 		"Chikmagalur":"http://www.prajavani.net/taxonomy/term/49/all/feed",
 		"Bijapur":"http://www.prajavani.net/taxonomy/term/59/all/feed",
-		"yadagiri":"http://www.prajavani.net/taxonomy/term/52/all/feed",
+		"Yadgir":"http://www.prajavani.net/taxonomy/term/52/all/feed",
 		"Koppal":"http://www.prajavani.net/taxonomy/term/50/all/feed",
 		"Chitradurga":"http://www.prajavani.net/taxonomy/term/36/all/feed",
 		"Ramanagara":"http://www.prajavani.net/taxonomy/term/66/all/feed",
 		"Kolar":"http://www.prajavani.net/taxonomy/term/65/all/feed",
 		"Tumkur":"http://www.prajavani.net/taxonomy/term/34/all/feed",
-		"Bangalore Rural":"http://www.prajavani.net/taxonomy/term/48/all/feed",
+		"Bangalore_Rural":"http://www.prajavani.net/taxonomy/term/48/all/feed",
 		"Raichur":"http://www.prajavani.net/taxonomy/term/41/all/feed",
 		"Gadag":"http://www.prajavani.net/taxonomy/term/58/all/feed",
 		"Davanagere":"http://www.prajavani.net/taxonomy/term/38/all/feed",
 		"Belgaum":"http://www.prajavani.net/taxonomy/term/55/all/feed",
 		"Haveri":"http://www.prajavani.net/taxonomy/term/57/all/feed",
 		"Gulbarga":"http://www.prajavani.net/taxonomy/term/40/all/feed",
-		"Yadgir":"http://www.prajavani.net/taxonomy/term/40/all/feed",
 		"Dharwad":"http://www.prajavani.net/taxonomy/term/54/all/feed",
 		"Mandya":"http://www.prajavani.net/taxonomy/term/63/all/feed",
 		"Hassan":"http://www.prajavani.net/taxonomy/term/45/all/feed",
@@ -78,7 +77,7 @@ var kannadaprabha = {
 		"Bollywood":"http://www.kannadaprabha.com/sectionrss-180.html",
 		"Mysore":"http://www.kannadaprabha.com/sectionrss-130.html",
 		"Bangalore":"http://www.kannadaprabha.com/sectionrss-131.html",
-		"Bangalore Rural":"http://www.kannadaprabha.com/sectionrss-132.html",
+		"Bangalore_Rural":"http://www.kannadaprabha.com/sectionrss-132.html",
 		"Ramanagara":"http://www.kannadaprabha.com/sectionrss-132.html",
 		"Bagalkot":"http://www.kannadaprabha.com/sectionrss-133.html",
 		"Belgaum":"http://www.kannadaprabha.com/sectionrss-134.html",
@@ -88,7 +87,7 @@ var kannadaprabha = {
 		"Chamarajanagar":"http://www.kannadaprabha.com/sectionrss-138.html",
 		"Chikmagalur":"http://www.kannadaprabha.com/sectionrss-139.html",
 		"Chitradurga":"http://www.kannadaprabha.com/sectionrss-140.html",
-		"Dakshina Kannada":"http://www.kannadaprabha.com/sectionrss-141.html",
+		"Dakshina_Kannada":"http://www.kannadaprabha.com/sectionrss-141.html",
 		"Davanagere":"http://www.kannadaprabha.com/sectionrss-142.html",
 		"Dharwad":"http://www.kannadaprabha.com/sectionrss-143.html",
 		"Gadag":"http://www.kannadaprabha.com/sectionrss-144.html",
@@ -105,7 +104,7 @@ var kannadaprabha = {
 		"Shivamogga":"http://www.kannadaprabha.com/sectionrss-153.html",
 		"Tumkur":"http://www.kannadaprabha.com/sectionrss-154.html",
 		"Udupi":"http://www.kannadaprabha.com/sectionrss-155.html",
-		"Uttara Kannada":"http://www.kannadaprabha.com/sectionrss-156.html",
+		"Uttara_Kannada":"http://www.kannadaprabha.com/sectionrss-156.html",
 		"Sapthahikaprabha":"http://www.kannadaprabha.com/sectionrss-158.html",
 		"by2coffee":"http://www.kannadaprabha.com/sectionrss-160.html",
 		"ArtLiterature":"http://www.kannadaprabha.com/sectionrss-161.html",
@@ -164,6 +163,12 @@ var finalagricultureObj =[];
 var feedagricultureready = 0;
 var finalforeignObj =[];	
 var feedaforeignready = 0;
+
+///
+var finalDavanagereObj =[];	
+var feedaDavanagereready = 0;
+
+///
 
 var finalDistObj =[];	
 var feedDistready = 0;
@@ -248,15 +253,18 @@ exports.init = function(){
 	no_of_clicks = 0;
 	getfeed(weblinks);
 	getcolumnsfeed();
-	getagriculturefeed();
-	getCommercefeed();
-	getstatefeed();
-	getnationalfeed();
-	getmoviesfeed();
-	getsciencefeed();
-	getsportsfeed();
-	getforeignfeed();
-	getspecialfeed();
+	// getagriculturefeed();
+	// getCommercefeed();
+	// getstatefeed();
+	// getnationalfeed();
+	// getmoviesfeed();
+	// getsciencefeed();
+	// getsportsfeed();
+	// getforeignfeed();
+	// getspecialfeed();
+	getDavanagerefeed();
+	//getBangalorefeed();
+	getShivamoggafeed();
 	//getspecialfeed();
 	// setInterval(function () {
 	// getfeed(weblinks);
@@ -268,6 +276,7 @@ no_of_clicks++;
 send_no_of_clicks(socket);
  	sendFeed(socket);
  	sendcolumnFeed(socket);
+ 	//sendDavanagereFeed(socket);
 	//doColumnist(socket);
   // setInterval(function () {
   // 	//doQuery(socket);
@@ -277,15 +286,17 @@ send_no_of_clicks(socket);
 
  socket.on('district', function (district) {
  	console.log("inside district -->",district);
- 	if(district == 'Bangalore' || district == 'Shivamogga')
+ 	if(district == 'Davanagere')
  	{
- 		getDistrictfeed(socket,district);
- 	}
+ 		sendDavanagereFeed(socket);
+	}
  	else
  	{
- 		getDistrictfeed(socket,'Davanagere');
+ 		sendShivamoggaFeed(socket);
+ 	//	getDistrictfeed(socket,'Davanagere');
+ 		
  	}
- 	});
+ 	 });
 
 socket.on('sideOptions', function (ID) {
  	console.log("inside state ------------------->",ID);
@@ -789,3 +800,1243 @@ return masterList ;
 }
 
 ///to convert lang lat use--http://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&sensor=true_or_false
+
+//////////////////////district feed//////////////////////
+var finalBangaloreObj =[];	
+var feedaBangaloreready = 0;
+function sendBangaloreFeed(socket)
+{
+   if(feedBangaloreready == 1)   {
+   	   	socket.emit('district',finalBangaloreObj);
+   }
+}
+
+function getBangalorefeed()
+{
+	console.log("Inside Start getfeed function");
+	finalBangaloreObj =[];
+	feedBangaloreready = 0;
+	var j = 0;
+	var Bangalore = new Array();
+	Bangalore[0] = prajavani["Bangalore"];
+	Bangalore[1] = kannadaprabha["Bangalore"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Bangalore[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalBangaloreObj = finalBangaloreObj.concat(out.items[0]);
+	    	finalBangaloreObj = finalBangaloreObj.concat(out.items[1]);
+	    	finalBangaloreObj = finalBangaloreObj.concat(out.items[2]);
+	    	finalBangaloreObj = finalBangaloreObj.concat(out.items[4]);
+	    	finalBangaloreObj = finalBangaloreObj.concat(out.items[5]);
+	    	finalBangaloreObj = finalBangaloreObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalBangaloreObj = arrysort(finalBangaloreObj);
+   	feedBangaloreready = 1;
+   }
+});
+}
+}
+
+var finalUdupiObj =[];	
+var feedaUdupiready = 0;
+function sendUdupiFeed(socket)
+{
+   if(feedUdupiready == 1)   {
+   	   	socket.emit('district',finalUdupiObj);
+   }
+}
+
+function getUdupifeed()
+{
+	console.log("Inside Start getfeed function");
+	finalUdupiObj =[];
+	feedUdupiready = 0;
+	var j = 0;
+	var Udupi = new Array();
+	Udupi[0] = prajavani["Udupi"];
+	Udupi[1] = kannadaprabha["Udupi"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Udupi[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalUdupiObj = finalUdupiObj.concat(out.items[0]);
+	    	finalUdupiObj = finalUdupiObj.concat(out.items[1]);
+	    	finalUdupiObj = finalUdupiObj.concat(out.items[2]);
+	    	finalUdupiObj = finalUdupiObj.concat(out.items[4]);
+	    	finalUdupiObj = finalUdupiObj.concat(out.items[5]);
+	    	finalUdupiObj = finalUdupiObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalUdupiObj = arrysort(finalUdupiObj);
+   	feedUdupiready = 1;
+   }
+});
+}
+}
+
+var finalChamarajanagarObj =[];	
+var feedaChamarajanagarready = 0;
+function sendChamarajanagarFeed(socket)
+{
+   if(feedChamarajanagarready == 1)   {
+   	   	socket.emit('district',finalChamarajanagarObj);
+   }
+}
+
+function getChamarajanagarfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalChamarajanagarObj =[];
+	feedChamarajanagarready = 0;
+	var j = 0;
+	var Chamarajanagar = new Array();
+	Chamarajanagar[0] = prajavani["Chamarajanagar"];
+	Chamarajanagar[1] = kannadaprabha["Chamarajanagar"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Chamarajanagar[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalChamarajanagarObj = finalChamarajanagarObj.concat(out.items[0]);
+	    	finalChamarajanagarObj = finalChamarajanagarObj.concat(out.items[1]);
+	    	finalChamarajanagarObj = finalChamarajanagarObj.concat(out.items[2]);
+	    	finalChamarajanagarObj = finalChamarajanagarObj.concat(out.items[4]);
+	    	finalChamarajanagarObj = finalChamarajanagarObj.concat(out.items[5]);
+	    	finalChamarajanagarObj = finalChamarajanagarObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalChamarajanagarObj = arrysort(finalChamarajanagarObj);
+   	feedChamarajanagarready = 1;
+   }
+});
+}
+}
+
+var finalBellaryObj =[];	
+var feedaBellaryready = 0;
+function sendBellaryFeed(socket)
+{
+   if(feedBellaryready == 1)   {
+   	   	socket.emit('district',finalBellaryObj);
+   }
+}
+
+function getBellaryfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalBellaryObj =[];
+	feedBellaryready = 0;
+	var j = 0;
+	var Bellary = new Array();
+	Bellary[0] = prajavani["Bellary"];
+	Bellary[1] = kannadaprabha["Bellary"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Bellary[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalBellaryObj = finalBellaryObj.concat(out.items[0]);
+	    	finalBellaryObj = finalBellaryObj.concat(out.items[1]);
+	    	finalBellaryObj = finalBellaryObj.concat(out.items[2]);
+	    	finalBellaryObj = finalBellaryObj.concat(out.items[4]);
+	    	finalBellaryObj = finalBellaryObj.concat(out.items[5]);
+	    	finalBellaryObj = finalBellaryObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalBellaryObj = arrysort(finalBellaryObj);
+   	feedBellaryready = 1;
+   }
+});
+}
+}
+
+var finalShivamoggaObj =[];	
+var feedaShivamoggaready = 0;
+function sendShivamoggaFeed(socket)
+{
+   if(feedShivamoggaready == 1)   {
+   	   	socket.emit('district',finalShivamoggaObj);
+   }
+}
+
+function getShivamoggafeed()
+{
+	console.log("Inside Start getfeed function");
+	finalShivamoggaObj =[];
+	feedShivamoggaready = 0;
+	var j = 0;
+	var Shivamogga = new Array();
+	Shivamogga[0] = prajavani["Shivamogga"];
+	Shivamogga[1] = kannadaprabha["Shivamogga"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Shivamogga[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalShivamoggaObj = finalShivamoggaObj.concat(out.items[0]);
+	    	finalShivamoggaObj = finalShivamoggaObj.concat(out.items[1]);
+	    	finalShivamoggaObj = finalShivamoggaObj.concat(out.items[2]);
+	    	finalShivamoggaObj = finalShivamoggaObj.concat(out.items[4]);
+	    	finalShivamoggaObj = finalShivamoggaObj.concat(out.items[5]);
+	    	finalShivamoggaObj = finalShivamoggaObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalShivamoggaObj = arrysort(finalShivamoggaObj);
+   	feedShivamoggaready = 1;
+   }
+});
+}
+}
+
+var finalBidarObj =[];	
+var feedaBidarready = 0;
+function sendBidarFeed(socket)
+{
+   if(feedBidarready == 1)   {
+   	   	socket.emit('district',finalBidarObj);
+   }
+}
+
+function getBidarfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalBidarObj =[];
+	feedBidarready = 0;
+	var j = 0;
+	var Bidar = new Array();
+	Bidar[0] = prajavani["Bidar"];
+	Bidar[1] = kannadaprabha["Bidar"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Bidar[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalBidarObj = finalBidarObj.concat(out.items[0]);
+	    	finalBidarObj = finalBidarObj.concat(out.items[1]);
+	    	finalBidarObj = finalBidarObj.concat(out.items[2]);
+	    	finalBidarObj = finalBidarObj.concat(out.items[4]);
+	    	finalBidarObj = finalBidarObj.concat(out.items[5]);
+	    	finalBidarObj = finalBidarObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalBidarObj = arrysort(finalBidarObj);
+   	feedBidarready = 1;
+   }
+});
+}
+}
+
+var finalUttara_KannadaObj =[];	
+var feedaUttara_Kannadaready = 0;
+function sendUttara_KannadaFeed(socket)
+{
+   if(feedUttara_Kannadaready == 1)   {
+   	   	socket.emit('district',finalUttara_KannadaObj);
+   }
+}
+
+function getUttara_Kannadafeed()
+{
+	console.log("Inside Start getfeed function");
+	finalUttara_KannadaObj =[];
+	feedUttara_Kannadaready = 0;
+	var j = 0;
+	var Uttara_Kannada = new Array();
+	Uttara_Kannada[0] = prajavani["Uttara_Kannada"];
+	Uttara_Kannada[1] = kannadaprabha["Uttara_Kannada"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Uttara_Kannada[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalUttara_KannadaObj = finalUttara_KannadaObj.concat(out.items[0]);
+	    	finalUttara_KannadaObj = finalUttara_KannadaObj.concat(out.items[1]);
+	    	finalUttara_KannadaObj = finalUttara_KannadaObj.concat(out.items[2]);
+	    	finalUttara_KannadaObj = finalUttara_KannadaObj.concat(out.items[4]);
+	    	finalUttara_KannadaObj = finalUttara_KannadaObj.concat(out.items[5]);
+	    	finalUttara_KannadaObj = finalUttara_KannadaObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalUttara_KannadaObj = arrysort(finalUttara_KannadaObj);
+   	feedUttara_Kannadaready = 1;
+   }
+});
+}
+}
+
+
+var finalChikballapurObj =[];	
+var feedaChikballapurready = 0;
+function sendChikballapurFeed(socket)
+{
+   if(feedChikballapurready == 1)   {
+   	   	socket.emit('district',finalChikballapurObj);
+   }
+}
+
+function getChikballapurfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalChikballapurObj =[];
+	feedChikballapurready = 0;
+	var j = 0;
+	var Chikballapur = new Array();
+	Chikballapur[0] = prajavani["Chikballapur"];
+	Chikballapur[1] = kannadaprabha["Chikballapur"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Chikballapur[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalChikballapurObj = finalChikballapurObj.concat(out.items[0]);
+	    	finalChikballapurObj = finalChikballapurObj.concat(out.items[1]);
+	    	finalChikballapurObj = finalChikballapurObj.concat(out.items[2]);
+	    	finalChikballapurObj = finalChikballapurObj.concat(out.items[4]);
+	    	finalChikballapurObj = finalChikballapurObj.concat(out.items[5]);
+	    	finalChikballapurObj = finalChikballapurObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalChikballapurObj = arrysort(finalChikballapurObj);
+   	feedChikballapurready = 1;
+   }
+});
+}
+}
+
+var finalBagalkotObj =[];	
+var feedaBagalkotready = 0;
+function sendBagalkotFeed(socket)
+{
+   if(feedBagalkotready == 1)   {
+   	   	socket.emit('district',finalBagalkotObj);
+   }
+}
+
+function getBagalkotfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalBagalkotObj =[];
+	feedBagalkotready = 0;
+	var j = 0;
+	var Bagalkot = new Array();
+	Bagalkot[0] = prajavani["Bagalkot"];
+	Bagalkot[1] = kannadaprabha["Bagalkot"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Bagalkot[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalBagalkotObj = finalBagalkotObj.concat(out.items[0]);
+	    	finalBagalkotObj = finalBagalkotObj.concat(out.items[1]);
+	    	finalBagalkotObj = finalBagalkotObj.concat(out.items[2]);
+	    	finalBagalkotObj = finalBagalkotObj.concat(out.items[4]);
+	    	finalBagalkotObj = finalBagalkotObj.concat(out.items[5]);
+	    	finalBagalkotObj = finalBagalkotObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalBagalkotObj = arrysort(finalBagalkotObj);
+   	feedBagalkotready = 1;
+   }
+});
+}
+}
+var finalMysoreObj =[];	
+var feedaMysoreready = 0;
+function sendMysoreFeed(socket)
+{
+   if(feedMysoreready == 1)   {
+   	   	socket.emit('district',finalMysoreObj);
+   }
+}
+
+function getMysorefeed()
+{
+	console.log("Inside Start getfeed function");
+	finalMysoreObj =[];
+	feedMysoreready = 0;
+	var j = 0;
+	var Mysore = new Array();
+	Mysore[0] = prajavani["Mysore"];
+	Mysore[1] = kannadaprabha["Mysore"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Mysore[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalMysoreObj = finalMysoreObj.concat(out.items[0]);
+	    	finalMysoreObj = finalMysoreObj.concat(out.items[1]);
+	    	finalMysoreObj = finalMysoreObj.concat(out.items[2]);
+	    	finalMysoreObj = finalMysoreObj.concat(out.items[4]);
+	    	finalMysoreObj = finalMysoreObj.concat(out.items[5]);
+	    	finalMysoreObj = finalMysoreObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalMysoreObj = arrysort(finalMysoreObj);
+   	feedMysoreready = 1;
+   }
+});
+}
+}
+var finalDakshina_KannadaObj =[];	
+var feedaDakshina_Kannadaready = 0;
+function sendDakshina_KannadaFeed(socket)
+{
+   if(feedDakshina_Kannadaready == 1)   {
+   	   	socket.emit('district',finalDakshina_KannadaObj);
+   }
+}
+
+function getDakshina_Kannadafeed()
+{
+	console.log("Inside Start getfeed function");
+	finalDakshina_KannadaObj =[];
+	feedDakshina_Kannadaready = 0;
+	var j = 0;
+	var Dakshina_Kannada = new Array();
+	Dakshina_Kannada[0] = prajavani["Dakshina_Kannada"];
+	Dakshina_Kannada[1] = kannadaprabha["Dakshina_Kannada"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Dakshina_Kannada[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalDakshina_KannadaObj = finalDakshina_KannadaObj.concat(out.items[0]);
+	    	finalDakshina_KannadaObj = finalDakshina_KannadaObj.concat(out.items[1]);
+	    	finalDakshina_KannadaObj = finalDakshina_KannadaObj.concat(out.items[2]);
+	    	finalDakshina_KannadaObj = finalDakshina_KannadaObj.concat(out.items[4]);
+	    	finalDakshina_KannadaObj = finalDakshina_KannadaObj.concat(out.items[5]);
+	    	finalDakshina_KannadaObj = finalDakshina_KannadaObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalDakshina_KannadaObj = arrysort(finalDakshina_KannadaObj);
+   	feedDakshina_Kannadaready = 1;
+   }
+});
+}
+}
+var finalKodaguObj =[];	
+var feedaKodaguready = 0;
+function sendKodaguFeed(socket)
+{
+   if(feedKodaguready == 1)   {
+   	   	socket.emit('district',finalKodaguObj);
+   }
+}
+
+function getKodagufeed()
+{
+	console.log("Inside Start getfeed function");
+	finalKodaguObj =[];
+	feedKodaguready = 0;
+	var j = 0;
+	var Kodagu = new Array();
+	Kodagu[0] = prajavani["Kodagu"];
+	Kodagu[1] = kannadaprabha["Kodagu"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Kodagu[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalKodaguObj = finalKodaguObj.concat(out.items[0]);
+	    	finalKodaguObj = finalKodaguObj.concat(out.items[1]);
+	    	finalKodaguObj = finalKodaguObj.concat(out.items[2]);
+	    	finalKodaguObj = finalKodaguObj.concat(out.items[4]);
+	    	finalKodaguObj = finalKodaguObj.concat(out.items[5]);
+	    	finalKodaguObj = finalKodaguObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalKodaguObj = arrysort(finalKodaguObj);
+   	feedKodaguready = 1;
+   }
+});
+}
+}
+var finalChikmagalurObj =[];	
+var feedaChikmagalurready = 0;
+function sendKodaguFeed(socket)
+{
+   if(feedChikmagalurready == 1)   {
+   	   	socket.emit('district',finalChikmagalurObj);
+   }
+}
+
+function getChikmagalurfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalChikmagalurObj =[];
+	feedChikmagalurready = 0;
+	var j = 0;
+	var Chikmagalur = new Array();
+	Chikmagalur[0] = prajavani["Chikmagalur"];
+	Chikmagalur[1] = kannadaprabha["Chikmagalur"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Chikmagalur[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalChikmagalurObj = finalChikmagalurObj.concat(out.items[0]);
+	    	finalChikmagalurObj = finalChikmagalurObj.concat(out.items[1]);
+	    	finalChikmagalurObj = finalChikmagalurObj.concat(out.items[2]);
+	    	finalChikmagalurObj = finalChikmagalurObj.concat(out.items[4]);
+	    	finalChikmagalurObj = finalChikmagalurObj.concat(out.items[5]);
+	    	finalChikmagalurObj = finalChikmagalurObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalChikmagalurObj = arrysort(finalChikmagalurObj);
+   	feedChikmagalurready = 1;
+   }
+});
+}
+}
+var finalBijapurObj =[];	
+var feedaBijapurready = 0;
+function sendBijapurFeed(socket)
+{
+   if(feedBijapurready == 1)   {
+   	   	socket.emit('district',finalBijapurObj);
+   }
+}
+
+function getBijapurfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalBijapurObj =[];
+	feedBijapurready = 0;
+	var j = 0;
+	var Bijapur = new Array();
+	Bijapur[0] = prajavani["Bijapur"];
+	Bijapur[1] = kannadaprabha["Bijapur"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Bijapur[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalBijapurObj = finalBijapurObj.concat(out.items[0]);
+	    	finalBijapurObj = finalBijapurObj.concat(out.items[1]);
+	    	finalBijapurObj = finalBijapurObj.concat(out.items[2]);
+	    	finalBijapurObj = finalBijapurObj.concat(out.items[4]);
+	    	finalBijapurObj = finalBijapurObj.concat(out.items[5]);
+	    	finalBijapurObj = finalBijapurObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalBijapurObj = arrysort(finalBijapurObj);
+   	feedBijapurready = 1;
+   }
+});
+}
+}
+var finalYadgirObj =[];	
+var feedaYadgirready = 0;
+function sendYadgirFeed(socket)
+{
+   if(feedYadgirready == 1)   {
+   	   	socket.emit('district',finalYadgirObj);
+   }
+}
+
+function getYadgirfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalYadgirObj =[];
+	feedYadgirready = 0;
+	var j = 0;
+	var Yadgir = new Array();
+	Yadgir[0] = prajavani["Yadgir"];
+	Yadgir[1] = kannadaprabha["Yadgir"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Yadgir[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalYadgirObj = finalYadgirObj.concat(out.items[0]);
+	    	finalYadgirObj = finalYadgirObj.concat(out.items[1]);
+	    	finalYadgirObj = finalYadgirObj.concat(out.items[2]);
+	    	finalYadgirObj = finalYadgirObj.concat(out.items[4]);
+	    	finalYadgirObj = finalYadgirObj.concat(out.items[5]);
+	    	finalYadgirObj = finalYadgirObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalYadgirObj = arrysort(finalYadgirObj);
+   	feedYadgirready = 1;
+   }
+});
+}
+}
+var finalKoppalObj =[];	
+var feedaKoppalready = 0;
+function sendKoppalFeed(socket)
+{
+   if(feedKoppalready == 1)   {
+   	   	socket.emit('district',finalKoppalObj);
+   }
+}
+
+function getKoppalfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalKoppalObj =[];
+	feedKoppalready = 0;
+	var j = 0;
+	var Koppal = new Array();
+	Koppal[0] = prajavani["Koppal"];
+	Koppal[1] = kannadaprabha["Koppal"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Koppal[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalKoppalObj = finalKoppalObj.concat(out.items[0]);
+	    	finalKoppalObj = finalKoppalObj.concat(out.items[1]);
+	    	finalKoppalObj = finalKoppalObj.concat(out.items[2]);
+	    	finalKoppalObj = finalKoppalObj.concat(out.items[4]);
+	    	finalKoppalObj = finalKoppalObj.concat(out.items[5]);
+	    	finalKoppalObj = finalKoppalObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalKoppalObj = arrysort(finalKoppalObj);
+   	feedKoppalready = 1;
+   }
+});
+}
+}
+var finalChitradurgaObj =[];	
+var feedaChitradurgaready = 0;
+function sendChitradurgaFeed(socket)
+{
+   if(feedChitradurgaready == 1)   {
+   	   	socket.emit('district',finalChitradurgaObj);
+   }
+}
+
+function getChitradurgafeed()
+{
+	console.log("Inside Start getfeed function");
+	finalChitradurgaObj =[];
+	feedChitradurgaready = 0;
+	var j = 0;
+	var Chitradurga = new Array();
+	Chitradurga[0] = prajavani["Chitradurga"];
+	Chitradurga[1] = kannadaprabha["Chitradurga"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Chitradurga[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalChitradurgaObj = finalChitradurgaObj.concat(out.items[0]);
+	    	finalChitradurgaObj = finalChitradurgaObj.concat(out.items[1]);
+	    	finalChitradurgaObj = finalChitradurgaObj.concat(out.items[2]);
+	    	finalChitradurgaObj = finalChitradurgaObj.concat(out.items[4]);
+	    	finalChitradurgaObj = finalChitradurgaObj.concat(out.items[5]);
+	    	finalChitradurgaObj = finalChitradurgaObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalChitradurgaObj = arrysort(finalChitradurgaObj);
+   	feedChitradurgaready = 1;
+   }
+});
+}
+}
+var finalRamanagaraObj =[];	
+var feedaRamanagaraready = 0;
+function sendRamanagaraFeed(socket)
+{
+   if(feedRamanagaraready == 1)   {
+   	   	socket.emit('district',finalRamanagaraObj);
+   }
+}
+
+function getRamanagarafeed()
+{
+	console.log("Inside Start getfeed function");
+	finalRamanagaraObj =[];
+	feedRamanagaraready = 0;
+	var j = 0;
+	var Ramanagara = new Array();
+	Ramanagara[0] = prajavani["Ramanagara"];
+	Ramanagara[1] = kannadaprabha["Ramanagara"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Ramanagara[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalRamanagaraObj = finalRamanagaraObj.concat(out.items[0]);
+	    	finalRamanagaraObj = finalRamanagaraObj.concat(out.items[1]);
+	    	finalRamanagaraObj = finalRamanagaraObj.concat(out.items[2]);
+	    	finalRamanagaraObj = finalRamanagaraObj.concat(out.items[4]);
+	    	finalRamanagaraObj = finalRamanagaraObj.concat(out.items[5]);
+	    	finalRamanagaraObj = finalRamanagaraObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalRamanagaraObj = arrysort(finalRamanagaraObj);
+   	feedRamanagaraready = 1;
+   }
+});
+}
+}var finalKolarObj =[];	
+var feedaKolarready = 0;
+function sendKolarFeed(socket)
+{
+   if(feedKolarready == 1)   {
+   	   	socket.emit('district',finalKolarObj);
+   }
+}
+
+function getKolarfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalKolarObj =[];
+	feedKolarready = 0;
+	var j = 0;
+	var Kolar = new Array();
+	Kolar[0] = prajavani["Kolar"];
+	Kolar[1] = kannadaprabha["Kolar"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Kolar[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalKolarObj = finalKolarObj.concat(out.items[0]);
+	    	finalKolarObj = finalKolarObj.concat(out.items[1]);
+	    	finalKolarObj = finalKolarObj.concat(out.items[2]);
+	    	finalKolarObj = finalKolarObj.concat(out.items[4]);
+	    	finalKolarObj = finalKolarObj.concat(out.items[5]);
+	    	finalKolarObj = finalKolarObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalKolarObj = arrysort(finalKolarObj);
+   	feedKolarready = 1;
+   }
+});
+}
+}
+var finalTumkurObj =[];	
+var feedaTumkurready = 0;
+function sendTumkurFeed(socket)
+{
+   if(feedTumkurready == 1)   {
+   	   	socket.emit('district',finalTumkurObj);
+   }
+}
+
+function getTumkurfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalTumkurObj =[];
+	feedTumkurready = 0;
+	var j = 0;
+	var Tumkur = new Array();
+	Tumkur[0] = prajavani["Tumkur"];
+	Tumkur[1] = kannadaprabha["Tumkur"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Tumkur[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalTumkurObj = finalTumkurObj.concat(out.items[0]);
+	    	finalTumkurObj = finalTumkurObj.concat(out.items[1]);
+	    	finalTumkurObj = finalTumkurObj.concat(out.items[2]);
+	    	finalTumkurObj = finalTumkurObj.concat(out.items[4]);
+	    	finalTumkurObj = finalTumkurObj.concat(out.items[5]);
+	    	finalTumkurObj = finalTumkurObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalTumkurObj = arrysort(finalTumkurObj);
+   	feedTumkurready = 1;
+   }
+});
+}
+}
+var finalBangalor_RuralObj =[];	
+var feedaBangalor_Ruralready = 0;
+function sendBangalor_RuralFeed(socket)
+{
+   if(feedBangalor_Ruralready == 1)   {
+   	   	socket.emit('district',finalBangalor_RuralObj);
+   }
+}
+
+function getBangalor_Ruralfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalBangalor_RuralObj =[];
+	feedBangalor_Ruralready = 0;
+	var j = 0;
+	var Bangalor_Rural = new Array();
+	Bangalor_Rural[0] = prajavani["Bangalor_Rural"];
+	Bangalor_Rural[1] = kannadaprabha["Bangalor_Rural"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Bangalor_Rural[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalBangalor_RuralObj = finalBangalor_RuralObj.concat(out.items[0]);
+	    	finalBangalor_RuralObj = finalBangalor_RuralObj.concat(out.items[1]);
+	    	finalBangalor_RuralObj = finalBangalor_RuralObj.concat(out.items[2]);
+	    	finalBangalor_RuralObj = finalBangalor_RuralObj.concat(out.items[4]);
+	    	finalBangalor_RuralObj = finalBangalor_RuralObj.concat(out.items[5]);
+	    	finalBangalor_RuralObj = finalBangalor_RuralObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalBangalor_RuralObj = arrysort(finalBangalor_RuralObj);
+   	feedBangalor_Ruralready = 1;
+   }
+});
+}
+}
+var finalRaichurObj =[];	
+var feedaRaichurready = 0;
+function sendRaichurFeed(socket)
+{
+   if(feedRaichurready == 1)   {
+   	   	socket.emit('district',finalRaichurObj);
+   }
+}
+
+function getRaichurfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalRaichurObj =[];
+	feedRaichurready = 0;
+	var j = 0;
+	var Raichur = new Array();
+	Raichur[0] = prajavani["Raichur"];
+	Raichur[1] = kannadaprabha["Raichur"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Raichur[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalRaichurObj = finalRaichurObj.concat(out.items[0]);
+	    	finalRaichurObj = finalRaichurObj.concat(out.items[1]);
+	    	finalRaichurObj = finalRaichurObj.concat(out.items[2]);
+	    	finalRaichurObj = finalRaichurObj.concat(out.items[4]);
+	    	finalRaichurObj = finalRaichurObj.concat(out.items[5]);
+	    	finalRaichurObj = finalRaichurObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalRaichurObj = arrysort(finalRaichurObj);
+   	feedRaichurready = 1;
+   }
+});
+}
+}
+var finalGadagObj =[];	
+var feedaGadagready = 0;
+function sendGadagFeed(socket)
+{
+   if(feedGadagready == 1)   {
+   	   	socket.emit('district',finalGadagObj);
+   }
+}
+
+function getGadagfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalGadagObj =[];
+	feedGadagready = 0;
+	var j = 0;
+	var Gadag = new Array();
+	Gadag[0] = prajavani["Gadag"];
+	Gadag[1] = kannadaprabha["Gadag"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Gadag[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalGadagObj = finalGadagObj.concat(out.items[0]);
+	    	finalGadagObj = finalGadagObj.concat(out.items[1]);
+	    	finalGadagObj = finalGadagObj.concat(out.items[2]);
+	    	finalGadagObj = finalGadagObj.concat(out.items[4]);
+	    	finalGadagObj = finalGadagObj.concat(out.items[5]);
+	    	finalGadagObj = finalGadagObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalGadagObj = arrysort(finalGadagObj);
+   	feedGadagready = 1;
+   }
+});
+}
+}
+
+function sendDavanagereFeed(socket)
+{
+   if(feedDavanagereready == 1)   {
+   	   	socket.emit('district',finalDavanagereObj);
+   }
+}
+
+function getDavanagerefeed()
+{
+	console.log("Inside Start getfeed function");
+	finalDavanagereObj =[];
+	feedDavanagereready = 0;
+	var j = 0;
+	var Davanagere = new Array();
+	Davanagere[0] = prajavani["Davanagere"];
+	Davanagere[1] = kannadaprabha["Davanagere"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Davanagere[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalDavanagereObj = finalDavanagereObj.concat(out.items[0]);
+	    	finalDavanagereObj = finalDavanagereObj.concat(out.items[1]);
+	    	finalDavanagereObj = finalDavanagereObj.concat(out.items[2]);
+	    	finalDavanagereObj = finalDavanagereObj.concat(out.items[4]);
+	    	finalDavanagereObj = finalDavanagereObj.concat(out.items[5]);
+	    	finalDavanagereObj = finalDavanagereObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalDavanagereObj = arrysort(finalDavanagereObj);
+   	feedDavanagereready = 1;
+   }
+});
+}
+}
+var finalBelgaumObj =[];	
+var feedaBelgaumready = 0;
+function sendBelgaumFeed(socket)
+{
+   if(feedBelgaumready == 1)   {
+   	   	socket.emit('district',finalBelgaumObj);
+   }
+}
+
+function getBelgaumfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalBelgaumObj =[];
+	feedBelgaumready = 0;
+	var j = 0;
+	var Belgaum = new Array();
+	Belgaum[0] = prajavani["Belgaum"];
+	Belgaum[1] = kannadaprabha["Belgaum"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Belgaum[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalBelgaumObj = finalBelgaumObj.concat(out.items[0]);
+	    	finalBelgaumObj = finalBelgaumObj.concat(out.items[1]);
+	    	finalBelgaumObj = finalBelgaumObj.concat(out.items[2]);
+	    	finalBelgaumObj = finalBelgaumObj.concat(out.items[4]);
+	    	finalBelgaumObj = finalBelgaumObj.concat(out.items[5]);
+	    	finalBelgaumObj = finalBelgaumObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalBelgaumObj = arrysort(finalBelgaumObj);
+   	feedBelgaumready = 1;
+   }
+});
+}
+}
+var finalHaveriObj =[];	
+var feedaHaveriready = 0;
+function sendHaveriFeed(socket)
+{
+   if(feedHaveriready == 1)   {
+   	   	socket.emit('district',finalHaveriObj);
+   }
+}
+
+function getHaverifeed()
+{
+	console.log("Inside Start getfeed function");
+	finalHaveriObj =[];
+	feedHaveriready = 0;
+	var j = 0;
+	var Haveri = new Array();
+	Haveri[0] = prajavani["Haveri"];
+	Haveri[1] = kannadaprabha["Haveri"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Haveri[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalHaveriObj = finalHaveriObj.concat(out.items[0]);
+	    	finalHaveriObj = finalHaveriObj.concat(out.items[1]);
+	    	finalHaveriObj = finalHaveriObj.concat(out.items[2]);
+	    	finalHaveriObj = finalHaveriObj.concat(out.items[4]);
+	    	finalHaveriObj = finalHaveriObj.concat(out.items[5]);
+	    	finalHaveriObj = finalHaveriObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalHaveriObj = arrysort(finalHaveriObj);
+   	feedHaveriready = 1;
+   }
+});
+}
+}
+var finalGulbargaObj =[];	
+var feedaGulbargaready = 0;
+function sendGulbargaFeed(socket)
+{
+   if(feedGulbargaready == 1)   {
+   	   	socket.emit('district',finalGulbargaObj);
+   }
+}
+
+function getGulbargafeed()
+{
+	console.log("Inside Start getfeed function");
+	finalGulbargaObj =[];
+	feedGulbargaready = 0;
+	var j = 0;
+	var Gulbarga = new Array();
+	Gulbarga[0] = prajavani["Gulbarga"];
+	Gulbarga[1] = kannadaprabha["Gulbarga"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Gulbarga[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalGulbargaObj = finalGulbargaObj.concat(out.items[0]);
+	    	finalGulbargaObj = finalGulbargaObj.concat(out.items[1]);
+	    	finalGulbargaObj = finalGulbargaObj.concat(out.items[2]);
+	    	finalGulbargaObj = finalGulbargaObj.concat(out.items[4]);
+	    	finalGulbargaObj = finalGulbargaObj.concat(out.items[5]);
+	    	finalGulbargaObj = finalGulbargaObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalGulbargaObj = arrysort(finalGulbargaObj);
+   	feedGulbargaready = 1;
+   }
+});
+}
+}
+var finalDharwadObj =[];	
+var feedaDharwadready = 0;
+function sendDharwadFeed(socket)
+{
+   if(feedDharwadready == 1)   {
+   	   	socket.emit('district',finalDharwadObj);
+   }
+}
+
+function getDharwadfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalDharwadObj =[];
+	feedDharwadready = 0;
+	var j = 0;
+	var Dharwad = new Array();
+	Dharwad[0] = prajavani["Dharwad"];
+	Dharwad[1] = kannadaprabha["Dharwad"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Dharwad[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalDharwadObj = finalDharwadObj.concat(out.items[0]);
+	    	finalDharwadObj = finalDharwadObj.concat(out.items[1]);
+	    	finalDharwadObj = finalDharwadObj.concat(out.items[2]);
+	    	finalDharwadObj = finalDharwadObj.concat(out.items[4]);
+	    	finalDharwadObj = finalDharwadObj.concat(out.items[5]);
+	    	finalDharwadObj = finalDharwadObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalDharwadObj = arrysort(finalDharwadObj);
+   	feedDharwadready = 1;
+   }
+});
+}
+}
+var finalMandyaObj =[];	
+var feedaMandyaready = 0;
+function sendMandyaFeed(socket)
+{
+   if(feedMandyaready == 1)   {
+   	   	socket.emit('district',finalMandyaObj);
+   }
+}
+
+function getMandyafeed()
+{
+	console.log("Inside Start getfeed function");
+	finalMandyaObj =[];
+	feedMandyaready = 0;
+	var j = 0;
+	var Mandya = new Array();
+	Mandya[0] = prajavani["Mandya"];
+	Mandya[1] = kannadaprabha["Mandya"];
+	for(var i =0 ;i < 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Mandya[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalMandyaObj = finalMandyaObj.concat(out.items[0]);
+	    	finalMandyaObj = finalMandyaObj.concat(out.items[1]);
+	    	finalMandyaObj = finalMandyaObj.concat(out.items[2]);
+	    	finalMandyaObj = finalMandyaObj.concat(out.items[4]);
+	    	finalMandyaObj = finalMandyaObj.concat(out.items[5]);
+	    	finalMandyaObj = finalMandyaObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalMandyaObj = arrysort(finalMandyaObj);
+   	feedMandyaready = 1;
+   }
+});
+}
+}
+
+var finalHassanObj =[];	
+var feedaHassanready = 0;
+function sendHassanFeed(socket)
+{
+   if(feedHassanready == 1)   {
+   	   	socket.emit('district',finalHassanObj);
+   }
+}
+
+function getHassanfeed()
+{
+	console.log("Inside Start getfeed function");
+	finalHassanObj =[];
+	feedHassanready = 0;
+	var j = 0;
+	var Hassan = new Array();
+	Hassan[0] = prajavani["Hassan"];
+	Hassan[1] = kannadaprabha["Hassan"];
+	for(var i =0 ;i< 2;i++)	{
+		console.log("i -->",i);
+		parser.parseURL(Hassan[i], options, function(err, out){
+		//parser.parseURL(weblinks[i], options, function(err, out){
+    	if(out != null)    {
+    		console.log("concating j = ",j++," ");
+//			j++;
+	     	finalHassanObj = finalHassanObj.concat(out.items[0]);
+	    	finalHassanObj = finalHassanObj.concat(out.items[1]);
+	    	finalHassanObj = finalHassanObj.concat(out.items[2]);
+	    	finalHassanObj = finalHassanObj.concat(out.items[4]);
+	    	finalHassanObj = finalHassanObj.concat(out.items[5]);
+	    	finalHassanObj = finalHassanObj.concat(out.items[6]);
+   	}
+   	console.log("Inside Start getfeed function 5555");
+   if(j == 2)  {
+   	console.log("Inside Start getfeed function 3333");
+   	finalHassanObj = arrysort(finalHassanObj);
+   	feedHassanready = 1;
+   }
+});
+}
+}
