@@ -6,12 +6,13 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	 
 
 <div class="header">
- <center> <img src="/images/newsadda.jpg" alt="logo" ></center>
+ <center> <img src="/images/esuddi_4.png" alt="logo" ></center>
  
 </div>
-
+<hr>
 </head>
 <body onload = "onload_init()">
+
 <script>
 //<h1 style="margin-bottom:20;color:#000000;text-align:center;font: tunga;min-height: 45px;">ನ್ಯೂಸ್ ಅಡ್ಡ</h1></div>
 //var socket = io.connect('http://10.239.61.71:3000');
@@ -46,7 +47,7 @@ socket.on('columnist', function(message){
 				console.log('received message:', message);
 				var oNewP2 = document.getElementById("rightcontainer");
 				oNewP2.innerHTML = "";
-				printthecontent2(message);
+				printthecontent(message);
 });
 function onload_init()
 {
@@ -87,12 +88,13 @@ function printtHeadlines(message){
 		oNewP.innerHTML += " ";
 		oNewP.innerHTML += message[i].summary.substring(0,400).fontsize(2);
 		oNewP.innerHTML += "<br>";
+		oNewP.innerHTML += "<br>";
 			// oNewP.innerHTML += message[i].distance_in_seconds;
 		// oNewP.innerHTML += "<br>";
     } 
 }
 
-function printthecontent2(message){
+function printthecontent(message){
 	for(var i=0;i<7;i++)	{
 		var oNewP = document.getElementById("rightcontainer");
 	    var str = message.items[i].title;
