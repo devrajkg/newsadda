@@ -253,15 +253,15 @@ exports.init = function(){
 	no_of_clicks = 0;
 	getfeed(weblinks);
 	getcolumnsfeed();
-	// getagriculturefeed();
-	// getCommercefeed();
-	// getstatefeed();
-	// getnationalfeed();
-	// getmoviesfeed();
-	// getsciencefeed();
-	// getsportsfeed();
-	// getforeignfeed();
-	// getspecialfeed();
+	getagriculturefeed();
+	getCommercefeed();
+	getstatefeed();
+	getnationalfeed();
+	getmoviesfeed();
+	getsciencefeed();
+	getsportsfeed();
+	getforeignfeed();
+	getspecialfeed();
 	getDavanagerefeed();
 	//getBangalorefeed();
 	getShivamoggafeed();
@@ -337,6 +337,7 @@ socket.on('sideOptions', function (ID) {
    	{
  	 		sendscienceFeed(socket);
    	}
+   //	sendcolumnFeed(socket);
    	});
 
 };

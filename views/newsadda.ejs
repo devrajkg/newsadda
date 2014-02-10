@@ -6,7 +6,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	 
 
 <div class="header">
- <center> <img src="/images/esuddi_4.png" alt="logo" ></center>
+ <center> <img src="/images/ekshana.png" alt="logo" ></center>
  
 </div>
 <hr>
@@ -79,7 +79,7 @@ function printtHeadlines(message){
 		var oNewP = document.getElementById("middlecontainer");
 	    var str = message[i].title;
 		var result = str.link(message[i].url);
-		oNewP.innerHTML += result.bold();
+		oNewP.innerHTML += result.bold().fontsize(3);
 		oNewP.innerHTML += "<br>";
 		oNewP.innerHTML += message[i].paper_source.fontsize(1).fontcolor('82829B');
 		oNewP.innerHTML += " -";
@@ -91,9 +91,6 @@ function printtHeadlines(message){
 		oNewP.innerHTML += " ";
 		oNewP.innerHTML += message[i].summary.substring(0,400).fontsize(2);
 		oNewP.innerHTML += "<br>";
-//		oNewP.innerHTML += "<br>";
-			// oNewP.innerHTML += message[i].distance_in_seconds;
-		// oNewP.innerHTML += "<br>";
     } 
 }
 
@@ -102,15 +99,13 @@ function printthecontent(message){
 		var oNewP = document.getElementById("rightcontainer");
 	    var str = message[i].title;
 		var result = str.link(message[i].url);
-		oNewP.innerHTML += result.bold();
+		oNewP.innerHTML += result.fontsize(2);
 		oNewP.innerHTML += "<br>";
 		oNewP.innerHTML += message[i].paper_source.fontsize(1).fontcolor('82829B');
 		if(message[i].time_ago != null)		{
 			oNewP.innerHTML += "  ";
    			oNewP.innerHTML += message[i].time_ago.fontsize(1).fontcolor('82829B');
 		}
-		// oNewP.innerHTML += " -";
-		// oNewP.innerHTML += message.items[i].summary.substring(0,300);
 		 oNewP.innerHTML += "<br>";
     } 
 }
@@ -120,7 +115,7 @@ function printthecontentdistrict(message){
 		var oNewP = document.getElementById("rightcontainer2");
 	    var str = message[i].title;
 		var result = str.link(message[i].url);
-		oNewP.innerHTML += result.bold();
+		oNewP.innerHTML += result.fontsize(2);
 		oNewP.innerHTML += "<br>";
 		oNewP.innerHTML += message[i].paper_source.fontsize(1).fontcolor('82829B');
 		oNewP.innerHTML += " -";
@@ -129,11 +124,7 @@ function printthecontentdistrict(message){
 			oNewP.innerHTML += "  ";
    			oNewP.innerHTML += message[i].time_ago.fontsize(1).fontcolor('82829B');
 		}
-  //  		oNewP.innerHTML += "		";
-		// oNewP.innerHTML += message[i].summary.substring(0,400);
 		 	 oNewP.innerHTML += "<br>";
-		// oNewP.innerHTML += message[i].distance_in_seconds;
-		// oNewP.innerHTML += "<br>";
     } 
 }
 /*

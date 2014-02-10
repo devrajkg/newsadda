@@ -37,7 +37,7 @@ socket.on('columnist', function(message){
 				console.log('received message:', message);
 				var oNewP2 = document.getElementById("rightcontainer");
 				oNewP2.innerHTML = "";
-				printthecontent2(message);
+				printthecontent(message);
 });
 function onload_init()
 {
@@ -63,7 +63,7 @@ function showPosition(position)
 }
 
 function printtHeadlines(message){
-	for(var i=0;i<15;i++)	{
+	for(var i=0;i<20;i++)	{
 		var oNewP = document.getElementById("middlecontainer");
 	    var str = message[i].title;
 		var result = str.link(message[i].url);
@@ -79,47 +79,40 @@ function printtHeadlines(message){
 		oNewP.innerHTML += " ";
 		oNewP.innerHTML += message[i].summary.substring(0,400).fontsize(2);
 		oNewP.innerHTML += "<br>";
-			// oNewP.innerHTML += message[i].distance_in_seconds;
-		// oNewP.innerHTML += "<br>";
     } 
 }
 
-function printthecontent2(message){
-	for(var i=0;i<7;i++)	{
+function printthecontent(message){
+	for(var i=0;i<10;i++)	{
 		var oNewP = document.getElementById("rightcontainer");
-	    var str = message.items[i].title;
-		var result = str.link(message.items[i].url);
+	    var str = message[i].title;
+		var result = str.link(message[i].url);
 		oNewP.innerHTML += result.bold();
 		oNewP.innerHTML += "<br>";
-		oNewP.innerHTML += message.items[i].paper_source.fontsize(2).fontcolor('82829B');
+		oNewP.innerHTML += message[i].paper_source.fontsize(1).fontcolor('82829B');
 		if(message[i].time_ago != null)		{
 			oNewP.innerHTML += "  ";
-   			oNewP.innerHTML += message[i].time_ago.fontsize(2).fontcolor('82829B');
+   			oNewP.innerHTML += message[i].time_ago.fontsize(1).fontcolor('82829B');
 		}
-		// oNewP.innerHTML += " -";
-		// oNewP.innerHTML += message.items[i].summary.substring(0,300);
 		 oNewP.innerHTML += "<br>";
     } 
 }
 function printthecontentdistrict(message){
+
 	for(var i=0;i<10;i++)	{
 		var oNewP = document.getElementById("rightcontainer2");
 	    var str = message[i].title;
 		var result = str.link(message[i].url);
 		oNewP.innerHTML += result.bold();
 		oNewP.innerHTML += "<br>";
-		oNewP.innerHTML += message[i].paper_source.fontsize(2).fontcolor('82829B');
+		oNewP.innerHTML += message[i].paper_source.fontsize(1).fontcolor('82829B');
 		oNewP.innerHTML += " -";
 	
 		if(message[i].time_ago != null)		{
 			oNewP.innerHTML += "  ";
-   			oNewP.innerHTML += message[i].time_ago.fontsize(2).fontcolor('82829B');
+   			oNewP.innerHTML += message[i].time_ago.fontsize(1).fontcolor('82829B');
 		}
-  //  		oNewP.innerHTML += "		";
-		// oNewP.innerHTML += message[i].summary.substring(0,400);
-		 	 oNewP.innerHTML += "<br><br>";
-		// oNewP.innerHTML += message[i].distance_in_seconds;
-		// oNewP.innerHTML += "<br>";
+		 	 oNewP.innerHTML += "<br>";
     } 
 }
 /*
