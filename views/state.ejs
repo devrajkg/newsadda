@@ -4,12 +4,26 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 <script src="/socket.io/socket.io.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>	 
-<body onload = "onload_init()">
-<script>
-//var socket = io.connect('http://10.239.61.71:3000');
-var socket = io.connect('http://localhost:3000');
-var address = new Array();
 
+<div class="header">
+ <center> <img src="/images/ekshana.png" alt="logo" ></center>
+ 
+</div>
+<hr>
+</head>
+<body onload = "onload_init()">
+
+<script>
+var socket = io.connect('http://ekshana.elasticbeanstalk.com');
+//var socket = io.connect('http://localhost:3000');
+var address = new Array();
+socket.on('no_of_clicks', function(message){
+				console.log('received message:', message);
+				var oNewP = document.getElementById("footer");
+				oNewP.innerHTML += "--";
+				oNewP.innerHTML += message;
+				
+});
 socket.on('message', function(message){
 				console.log('received message:', message);
 				var oNewP = document.getElementById("middlecontainer");
@@ -31,19 +45,14 @@ socket.on('columnist', function(message){
 });
 function onload_init()
 {
-//
-	socket.emit('sideOptions',1);
-		socket.emit('district',"Davanagere");
-	// if (navigator.geolocation)    {
-	// 	navigator.geolocation.getCurrentPosition(showPosition);
- //    }
+     socket.emit('sideOptions',1);
+	 if (navigator.geolocation)    {
+	 	navigator.geolocation.getCurrentPosition(showPosition);
+    }
 }
 function sidebuttonClicked(ID)
 {
 	socket.emit('sideOptions',ID);
-	// if (navigator.geolocation)    {
-	// 	navigator.geolocation.getCurrentPosition(showPosition);
- //    }
 }
 function showPosition(position)
 {
@@ -58,7 +67,7 @@ function printtHeadlines(message){
 		var oNewP = document.getElementById("middlecontainer");
 	    var str = message[i].title;
 		var result = str.link(message[i].url);
-		oNewP.innerHTML += result.bold();
+		oNewP.innerHTML += result.bold().fontsize(3);
 		oNewP.innerHTML += "<br>";
 		oNewP.innerHTML += message[i].paper_source.fontsize(1).fontcolor('82829B');
 		oNewP.innerHTML += " -";
@@ -69,7 +78,7 @@ function printtHeadlines(message){
 		}
 		oNewP.innerHTML += " ";
 		oNewP.innerHTML += message[i].summary.substring(0,400).fontsize(2);
-		oNewP.innerHTML += "<br>";
+		oNewP.innerHTML += "<br><br>";
     } 
 }
 
@@ -78,7 +87,7 @@ function printthecontent(message){
 		var oNewP = document.getElementById("rightcontainer");
 	    var str = message[i].title;
 		var result = str.link(message[i].url);
-		oNewP.innerHTML += result.bold();
+		oNewP.innerHTML += result.fontsize(2);
 		oNewP.innerHTML += "<br>";
 		oNewP.innerHTML += message[i].paper_source.fontsize(1).fontcolor('82829B');
 		if(message[i].time_ago != null)		{
@@ -89,21 +98,18 @@ function printthecontent(message){
     } 
 }
 function printthecontentdistrict(message){
-
-	for(var i=0;i<10;i++)	{
+for(var i=0;i<10;i++)	{
 		var oNewP = document.getElementById("rightcontainer2");
 	    var str = message[i].title;
 		var result = str.link(message[i].url);
-		oNewP.innerHTML += result.bold();
+		oNewP.innerHTML += result.fontsize(2);
 		oNewP.innerHTML += "<br>";
 		oNewP.innerHTML += message[i].paper_source.fontsize(1).fontcolor('82829B');
-		oNewP.innerHTML += " -";
-	
 		if(message[i].time_ago != null)		{
 			oNewP.innerHTML += "  ";
    			oNewP.innerHTML += message[i].time_ago.fontsize(1).fontcolor('82829B');
 		}
-		 	 oNewP.innerHTML += "<br>";
+		 oNewP.innerHTML += "<br>";
     } 
 }
 /*
@@ -124,7 +130,17 @@ function printthecontentdistrict(message){
 	address['district'] = google_getDistrict(json);
 	//console.log(address['formatted_address'])
 	socket.emit('district',address['district']);
-	//socket.emit('district',"Davanagere");
+	districtHeading(address['district'])
+	//socket.emit('district','Davanagere');
+  }
+  function districtHeading(dist)
+  {
+  	var d = document.getElementById("distheading");
+	d.innerHTML = "";
+	if(dist == 'Davanagere'){d.innerHTML = "ದಾವಣಗೆರೆ ಜಿಲ್ಲೆ";}
+	else if(dist == 'Shivamogga'){d.innerHTML = "ಶಿವಮೊಗ್ಗ ಜಿಲ್ಲೆ";}
+	else {d.innerHTML = "ಬೆಂಗಳೂರು ಜಿಲ್ಲೆ";}
+//
   }
   /*
   * Given Google Geocode json, return the value in the specified element of the array
@@ -184,33 +200,32 @@ font:25px times,sans-serif;
 }
 </style>
 <div id="container">
-<div id="header" style="background-color:#DCDCDC;">
-<h1 style="margin-bottom:10;color:#FFFFFF;text-align:center;font: tunga">ನ್ಯೂಸ್ ಅಡ್ಡ</h1></div>
+
 <div id="side_menu">
+
 <a href="/state" onclick="sidebuttonClicked(1);" class="navitem">ರಾಜ್ಯ</a><br>
 <a href="/national" onclick="sidebuttonClicked(2);" class="navitem">ರಾಷ್ಟ್ರೀಯ</a><br>
 <a href="/commerce" onclick="sidebuttonClicked(3);" class="navitem">ವಾಣಿಜ್ಯ</a><br>
 <a href="/sports" onclick="sidebuttonClicked(4);" class="navitem">ಕ್ರೀಡೆ</a><br>
-<a href="/technology" onclick="sidebuttonClicked(5);" class="navitem">ತಂತ್ರಜ್ಞಾನ</a><br>
-<a href="/columns" onclick="sidebuttonClicked(6);" class="navitem">ಅಂಕಣಗಳು</a><br>
+<a href="/agriculture" onclick="sidebuttonClicked(6);" class="navitem">ಕೃಷಿ</a><br>
 <a href="/movies" onclick="sidebuttonClicked(7);" class="navitem">ಸಿನಿಮಾ</a><br>
 <a href="/special" onclick="sidebuttonClicked(8);" class="navitem">ವಿಶೇಷ</a><br>
-<a href="/science" onclick="sidebuttonClicked(9);" class="navitem">ವಿಜ್ಞಾನ</a><br>
+<a href="/science" onclick="sidebuttonClicked(9);" class="navitem">ವಿಜ್ಞಾನ/ತಂತ್ರಜ್ಞಾನ</a><br>
+<a href="/foreign" onclick="sidebuttonClicked(5);" class="navitem">ವಿದೇಶ</a><br>
 </div>
 
 <div id="middlecontainer" ></div>
 
 <div id="rightcontainerMaincontainer">
-<h2 style="background-color:#F0F0F0;color:#000000;text-align:center;font: tunga:">ಅಂಕಣಗಳು</h2>
+<h2 id="columns">ಅಂಕಣಗಳು</h2>
 <div id="rightcontainer" ></div>
-</div>
-<div id="rightcontainerMaincontainer2">
-<h2 style="background-color:#F0F0F0;color:#000000;text-align:center;font: tunga:">ಜಿಲ್ಲೆ</h2>	
+
+<h2 id="distheading">ಜಿಲ್ಲೆ</h2>	
 <div id="rightcontainer2"> </div>
 </div>
 <div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">Devraj Kuruva</div>
 
 </div>
 </body>
-</head>
+
 </html>

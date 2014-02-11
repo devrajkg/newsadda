@@ -263,12 +263,27 @@ exports.init = function(){
 	getforeignfeed();
 	getspecialfeed();
 	getDavanagerefeed();
-	//getBangalorefeed();
+	getBangalorefeed();
 	getShivamoggafeed();
 	//getspecialfeed();
-	// setInterval(function () {
-	// getfeed(weblinks);
- //  }, 500000);
+	 setInterval(function () {
+	 getfeed(weblinks);
+   }, 36000);
+	 setInterval(function () {
+	 getcolumnsfeed();
+	getagriculturefeed();
+	getCommercefeed();
+	getstatefeed();
+	getnationalfeed();
+	getmoviesfeed();
+	getsciencefeed();
+	getsportsfeed();
+	getforeignfeed();
+	getspecialfeed();
+	getDavanagerefeed();
+	//getBangalorefeed();
+	getShivamoggafeed();
+   }, 216000);
 }	
 exports.newsfeed = function(socket){
 
@@ -286,55 +301,45 @@ send_no_of_clicks(socket);
 
  socket.on('district', function (district) {
  	console.log("inside district -->",district);
- 	if(district == 'Davanagere')
- 	{
+ 	if(district == 'Davanagere') 	{
  		sendDavanagereFeed(socket);
 	}
- 	else
- 	{
+	else if(district == 'Shivamogga') 	{
  		sendShivamoggaFeed(socket);
- 	//	getDistrictfeed(socket,'Davanagere');
- 		
  	}
- 	 });
+ 	else{
+ 		sendBangaloreFeed(socket);
+ 	}
+ });
 
 socket.on('sideOptions', function (ID) {
  	console.log("inside state ------------------->",ID);
- 	if(ID == 1)
- 	{
+ 	if(ID == 1) 	{
  		//sendcolumnFeed(socket);
 		sendstateFeed(socket);  		
    	}
-   	else if(ID == 2)
-   	{
+   	else if(ID == 2)   	{
   		sendnationalFeed(socket);
    	}
-   	else if(ID == 3)
-   	{
+   	else if(ID == 3)   	{
  		sendCommerceFeed(socket);
    	}
-   	else if(ID == 4)
-   	{
+   	else if(ID == 4)   	{
  		sendsportsFeed(socket);
    	}
-   	else if(ID == 5)
-   	{
+   	else if(ID == 5)   	{
  			sendforeignFeed(socket);
    	}
-   	else if(ID == 6)
-   	{
+   	else if(ID == 6)   	{
  	 		sendagricultureFeed(socket);
    	}
-   	else if(ID == 7)
-   	{
+   	else if(ID == 7)   	{
  	  		sendmoviesFeed(socket);
    	}
-   	else if(ID == 8)
-   	{
+   	else if(ID == 8)   	{
  	 		sendspecialFeed(socket);
    	}
-   	else if(ID == 9)
-   	{
+   	else if(ID == 9)   	{
  	 		sendscienceFeed(socket);
    	}
    //	sendcolumnFeed(socket);

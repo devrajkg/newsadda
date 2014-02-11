@@ -14,14 +14,8 @@
 <body onload = "onload_init()">
 
 <script>
-//<h1 style="margin-bottom:20;color:#000000;text-align:center;font: tunga;min-height: 45px;">ನ್ಯೂಸ್ ಅಡ್ಡ</h1></div>
-//var socket = io.connect('http://10.239.61.71:3000');
-// <div id="header" style="background-color:#FFFFFF;">
-
-// <h1 id="logo">
-//     <a href="">N</a>
-// </h1>
-var socket = io.connect('http://localhost:3000');
+var socket = io.connect('http://ekshana.elasticbeanstalk.com');
+//var socket = io.connect('http://localhost:3000');
 var address = new Array();
 socket.on('no_of_clicks', function(message){
 				console.log('received message:', message);
@@ -51,20 +45,14 @@ socket.on('columnist', function(message){
 });
 function onload_init()
 {
-	socket.emit('district',"Haveri");
-var d = document.getElementById("distheading");
-d.innerHTML = "";
-d.innerHTML = "Davanagere ಜಿಲ್ಲೆ";
-	// if (navigator.geolocation)    {
-	// 	navigator.geolocation.getCurrentPosition(showPosition);
- //    }
+     //socket.emit('sideOptions',6);
+	 if (navigator.geolocation)    {
+	 	navigator.geolocation.getCurrentPosition(showPosition);
+    }
 }
 function sidebuttonClicked(ID)
 {
 	socket.emit('sideOptions',ID);
-	// if (navigator.geolocation)    {
-	// 	navigator.geolocation.getCurrentPosition(showPosition);
- //    }
 }
 function showPosition(position)
 {
@@ -90,7 +78,7 @@ function printtHeadlines(message){
 		}
 		oNewP.innerHTML += " ";
 		oNewP.innerHTML += message[i].summary.substring(0,400).fontsize(2);
-		oNewP.innerHTML += "<br>";
+		oNewP.innerHTML += "<br><br>";
     } 
 }
 
@@ -110,21 +98,18 @@ function printthecontent(message){
     } 
 }
 function printthecontentdistrict(message){
-
-	for(var i=0;i<10;i++)	{
+for(var i=0;i<10;i++)	{
 		var oNewP = document.getElementById("rightcontainer2");
 	    var str = message[i].title;
 		var result = str.link(message[i].url);
 		oNewP.innerHTML += result.fontsize(2);
 		oNewP.innerHTML += "<br>";
 		oNewP.innerHTML += message[i].paper_source.fontsize(1).fontcolor('82829B');
-		oNewP.innerHTML += " -";
-	
 		if(message[i].time_ago != null)		{
 			oNewP.innerHTML += "  ";
    			oNewP.innerHTML += message[i].time_ago.fontsize(1).fontcolor('82829B');
 		}
-		 	 oNewP.innerHTML += "<br>";
+		 oNewP.innerHTML += "<br>";
     } 
 }
 /*
@@ -144,8 +129,18 @@ function printthecontentdistrict(message){
 	address['formatted_address'] = google_getAddress(json);
 	address['district'] = google_getDistrict(json);
 	//console.log(address['formatted_address'])
-	//socket.emit('district',address['district']);
-	socket.emit('district',"Davanagere");
+	socket.emit('district',address['district']);
+	districtHeading(address['district'])
+	//socket.emit('district','Davanagere');
+  }
+  function districtHeading(dist)
+  {
+  	var d = document.getElementById("distheading");
+	d.innerHTML = "";
+	if(dist == 'Davanagere'){d.innerHTML = "ದಾವಣಗೆರೆ ಜಿಲ್ಲೆ";}
+	else if(dist == 'Shivamogga'){d.innerHTML = "ಶಿವಮೊಗ್ಗ ಜಿಲ್ಲೆ";}
+	else {d.innerHTML = "ಬೆಂಗಳೂರು ಜಿಲ್ಲೆ";}
+//
   }
   /*
   * Given Google Geocode json, return the value in the specified element of the array
@@ -222,11 +217,10 @@ font:25px times,sans-serif;
 <div id="middlecontainer" ></div>
 
 <div id="rightcontainerMaincontainer">
-<h2 style="background-color:#F0F0F0;color:#000000;text-align:center;font: tunga:">ಅಂಕಣಗಳು</h2>
+<h2 id="columns">ಅಂಕಣಗಳು</h2>
 <div id="rightcontainer" ></div>
-</div>
-<div id="rightcontainerMaincontainer2">
-<h2 id="distheading" style="background-color:#F0F0F0;color:#000000;text-align:center;font: tunga:">ಜಿಲ್ಲೆ</h2>	
+
+<h2 id="distheading">ಜಿಲ್ಲೆ</h2>	
 <div id="rightcontainer2"> </div>
 </div>
 <div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">Devraj Kuruva</div>

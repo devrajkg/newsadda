@@ -36,7 +36,7 @@ html,body{
 	/*background-color:#F0F8FF;height:600px;width:250px;float:left;font:28px tunga;color:red;
 	background-color:white;height:1500px;width:175px;font:16px tunga;
 	margin:10;*/
-	background-color:white;width:10%;text-align:top;font:16px tunga;float:left;height: 1500px;
+	background-color:white;width:10%;text-align:top;font:16px tunga;float:left;height: 1500px;position:relative;
 	/*position: absolute; width: 175px; height: 1500px; margin: 0; margin-top: 0px; border-right: 1px solid #C6EC8C; font-weight: normal; */
 }
 #middlecontainer
@@ -44,30 +44,71 @@ html,body{
 	
 	/* background-color:white;height:1000px;width:950px;float:left;font:28px tunga;
 	background-color:white;height:1500px;width:1050px;float:left;font:14px tunga;*/
-	background-color:white;width:70%;text-align:top;font:16px tunga;float:left;height: 100%;
+	background-color:white;
+  width:70%;
+  text-align:top;
+  font:16px tunga;
+  float:left;
+  height: 100%;
+  position:relative;
+}
+#rightcontainerMaincontainer
+{
+  float:right;
+    width: 20%;
+    height: 100%;
+    background: white;
+    text-align:top;
+    font:16px tunga;
+    position:relative; 
 }
 #rightcontainer
 {
 	/*background: ckground-color:#FF9900;height:1000px;width:260px;float:right;font:28px tunga;
 	background-color:white;height:750px;width:300px;float:right;font:14px tunga
 	background-color:white;height:50%;width:20%;text-align:top;font:16px tunga;float:right; */
-	float:left;
+	/*float:right;
     width: 20%;
     height: 100%;
     background: white;
     text-align:top;
     font:16px tunga;
+    position:relative; */
 }
-}
+
 #rightcontainer2
 {
 	/*background-color:white;height:50%;width:300px;float:right;font:16px tunga;text-align:top;*/
-	float:left;
+	/*float:right;
     width: 20%;
     height: 100%;
     background: white;
     text-align:top;
     font:16px tunga;
+    position:relative; */
+}
+
+#columns
+{
+/*float:right;
+  width: 20%;
+  position:relative;
+  */
+background-color:#F0F0F0;
+color:#000000;
+text-align:center;
+font: tunga;
+ 
+}
+#distheading
+{
+/*float:right;
+  width: 20%;
+  position:relative;*/ 
+background-color:#F0F0F0;
+color:#000000;
+text-align:center;
+font: tunga;
 }
 /*<div id="content1" style="background-color:white;height:800px;width:750px;float:left;font:18px tunga"></div>
 
