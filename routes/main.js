@@ -183,6 +183,7 @@ weblinks[3] = prajavani.national;
 weblinks[4] = udayavani.national;
 weblinks[5] = kannadaprabha.TopNews;
 weblinks[6] = prajavani.state;
+weblinks[7] = kannadaprabha.Politics;
 //weblinks[7] = others.suvarnanews;
 	
 link_count = weblinks.length;
@@ -200,6 +201,8 @@ columnistlinks[3] = kannadaprabha.Editorial;
 var state = new Array();
 state[0] = udayavani.karnataka;;
 state[1] = prajavani.state;
+state[2] = kannadaprabha.Politics;
+
 
 var national = new Array();
 national[0] = prajavani.national;
@@ -252,38 +255,38 @@ foreign[2] = kannadaprabha.HoranaduKannadiga;
 exports.init = function(){
 	no_of_clicks = 0;
 	getfeed(weblinks);
-	getcolumnsfeed();
-	getagriculturefeed();
-	getCommercefeed();
-	getstatefeed();
-	getnationalfeed();
-	getmoviesfeed();
-	getsciencefeed();
-	getsportsfeed();
-	getforeignfeed();
-	getspecialfeed();
-	getDavanagerefeed();
-	getBangalorefeed();
-	getShivamoggafeed();
-	//getspecialfeed();
-	 setInterval(function () {
-	 getfeed(weblinks);
-   }, 36000);
-	 setInterval(function () {
 	 getcolumnsfeed();
-	getagriculturefeed();
-	getCommercefeed();
-	getstatefeed();
-	getnationalfeed();
-	getmoviesfeed();
-	getsciencefeed();
-	getsportsfeed();
-	getforeignfeed();
-	getspecialfeed();
+	// getagriculturefeed();
+	// getCommercefeed();
+	// getstatefeed();
+	// getnationalfeed();
+	// getmoviesfeed();
+	// getsciencefeed();
+	// getsportsfeed();
+	// getforeignfeed();
+	// getspecialfeed();
 	getDavanagerefeed();
-	//getBangalorefeed();
-	getShivamoggafeed();
-   }, 216000);
+	// getBangalorefeed();
+	// getShivamoggafeed();
+	//getspecialfeed();
+	//  setInterval(function () {
+	//  getfeed(weblinks);
+ //   }, 36000);
+	//  setInterval(function () {
+	//  getcolumnsfeed();
+	// getagriculturefeed();
+	// getCommercefeed();
+	// getstatefeed();
+	// getnationalfeed();
+	// getmoviesfeed();
+	// getsciencefeed();
+	// getsportsfeed();
+	// getforeignfeed();
+	// getspecialfeed();
+	// getDavanagerefeed();
+	// //getBangalorefeed();
+	// getShivamoggafeed();
+ //   }, 216000);
 }	
 exports.newsfeed = function(socket){
 
@@ -307,8 +310,11 @@ send_no_of_clicks(socket);
 	else if(district == 'Shivamogga') 	{
  		sendShivamoggaFeed(socket);
  	}
- 	else{
+ 	else if(district == 'Bangalore') {
  		sendBangaloreFeed(socket);
+ 	}
+ 	else{
+ 		sendDavanagereFeed(socket);
  	}
  });
 
