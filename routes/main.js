@@ -1,3 +1,5 @@
+var http = require('http');
+var fs = require('fs');
 var parser = require('rssparser');
 var options = {};
 var prajavani = {
@@ -181,9 +183,8 @@ weblinks[1] = kannadaprabha.LatestNews;
 weblinks[2] = others.thatskannada;
 weblinks[3] = prajavani.national;
 weblinks[4] = udayavani.national;
-weblinks[5] = kannadaprabha.TopNews;
-weblinks[6] = prajavani.state;
-weblinks[7] = kannadaprabha.Politics;
+//weblinks[5] = kannadaprabha.TopNews;
+////weblinks[7] = kannadaprabha.Politics;
 //weblinks[7] = others.suvarnanews;
 	
 link_count = weblinks.length;
@@ -745,10 +746,9 @@ function getfeed(feedlinks)
 	for(var i =0 ;i< feedlinks.length;i++)	{
 		console.log("i -->",i);
 		parser.parseURL(feedlinks[i], options, function(err, out){
-		//parser.parseURL(weblinks[i], options, function(err, out){
     	if(out != null)    {
     		console.log("concating j = ",j++," ");
-//			j++;
+			
 	     	finalObj = finalObj.concat(out.items[0]);
 	    	finalObj = finalObj.concat(out.items[1]);
 	    	finalObj = finalObj.concat(out.items[2]);
@@ -760,10 +760,265 @@ function getfeed(feedlinks)
    if(j == feedlinks.length)  {
    	console.log("Inside Start getfeed function 3333");
    	finalObj = arrysort(finalObj);
+   	addImageLink2(finalObj,0);
    	feedready = 1;
    }
 });
 }
+}
+//http://www.kannadaprabha.com/latest-news/%E0%B2%AA%E0%B3%8D%E0%B2%B0%E0%B3%87%E0%B2%AE-%E0%B2%B5%E0%B2%BF%E0%B2%B5%E0%B2%BE%E0%B2%A6-%E0%B2%B8%E0%B2%BF%E0%B2%8E%E0%B2%82%E0%B2%97%E0%B3%86-%E0%B2%AA%E0%B2%A4%E0%B3%8D%E0%B2%B0-%E0%B2%AC%E0%B2%B0%E0%B3%86%E0%B2%A6-%E0%B2%B0%E0%B2%BE%E0%B2%AE%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B3%8D/176376.html
+//http://kannadaprabha.com/latest-news/ಪ್ರೇಮ-ವಿವಾದ-ಸಿಎಂಗೆ-ಪತ್ರ-ಬರೆದ-ರಾಮದಾಸ್/176376.html
+function addImageLink2(imageObj,i)
+{
+	if((imageObj[i].url.indexOf("http://kannadaprabha.com") == "") || (imageObj[i].url.indexOf("http://kannada.oneindia.in") == ""))
+	{
+     	//var link_url = "http://www.kannadaprabha.com/latest-news/%E0%B2%B2%E0%B3%8B%E0%B2%95%E0%B2%B8%E0%B2%AD%E0%B2%BE-%E0%B2%9A%E0%B3%81%E0%B2%A8%E0%B2%BE%E0%B2%B5%E0%B2%A3%E0%B3%86%E0%B2%97%E0%B3%86-%E0%B2%8E%E0%B2%8E%E0%B2%AA%E0%B2%BF-%E0%B2%B8%E0%B2%9C%E0%B3%8D%E0%B2%9C%E0%B3%81/176175.html"
+	//	var link_url = "http://www.kannadaprabha.com/top-news/ರಾಹುಲ್-ಮಾತು-ನೋಡಲು-ಕೇಳಲು-ಚೆಂದ-ಆದರೆ/176269.html"
+		var link_url;
+		link_url = imageObj[i].url;
+		if((imageObj[i].url.indexOf("http://kannadaprabha.com") == ""))
+		{
+			link_url = link_url.replace("http://kannadaprabha.com","http://www.kannadaprabha.com");
+		}
+		console.log(link_url);
+		var filename= "temp/kp";
+		filename = filename.concat(i);
+		filename = filename.concat(".html");
+		var file = fs.createWriteStream(filename);
+		var request = http.get(link_url, function(response) {
+		  response.pipe(file);
+		  i++;
+		  if(i < 15)
+		  {
+			  console.log("dayasudhan kuruva -----",i);
+			  console.log(filename);
+			  addImageLink2(imageObj,i);
+		  }
+     	  else
+     	  {
+     	  		 console.log("devraj kuruva -----",i);
+     	  		 generateImageLink(imageObj,0)
+     	  }
+		});
+	}
+	else if((imageObj[i].url.indexOf("http://www.prajavani.net") == ""))
+	{
+     	//var link_url = "http://www.kannadaprabha.com/latest-news/%E0%B2%B2%E0%B3%8B%E0%B2%95%E0%B2%B8%E0%B2%AD%E0%B2%BE-%E0%B2%9A%E0%B3%81%E0%B2%A8%E0%B2%BE%E0%B2%B5%E0%B2%A3%E0%B3%86%E0%B2%97%E0%B3%86-%E0%B2%8E%E0%B2%8E%E0%B2%AA%E0%B2%BF-%E0%B2%B8%E0%B2%9C%E0%B3%8D%E0%B2%9C%E0%B3%81/176175.html"
+	//	var link_url = "http://www.kannadaprabha.com/top-news/ರಾಹುಲ್-ಮಾತು-ನೋಡಲು-ಕೇಳಲು-ಚೆಂದ-ಆದರೆ/176269.html"
+		//var link_url = "http://www.kannadaprabha.com/latest-news/%E0%B2%AA%E0%B3%8D%E0%B2%B0%E0%B3%87%E0%B2%AE-%E0%B2%B5%E0%B2%BF%E0%B2%B5%E0%B2%BE%E0%B2%A6-%E0%B2%B8%E0%B2%BF%E0%B2%8E%E0%B2%82%E0%B2%97%E0%B3%86-%E0%B2%AA%E0%B2%A4%E0%B3%8D%E0%B2%B0-%E0%B2%AC%E0%B2%B0%E0%B3%86%E0%B2%A6-%E0%B2%B0%E0%B2%BE%E0%B2%AE%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B3%8D/176376.html"
+		var link_url = imageObj[i].url;
+		//link_url = link_url.replace("http://kannadaprabha.com","http://www.kannadaprabha.com");
+		console.log(link_url);
+		var filename= "temp/prj";
+		filename = filename.concat(i);
+		filename = filename.concat(".html");
+		var file = fs.createWriteStream(filename);
+		var request = http.get(link_url, function(response) {
+		  response.pipe(file);
+		  i++;
+		  if(i < 15)
+		  {
+			  console.log("dayasudhan kuruva -----",i);
+			  console.log(filename);
+			  addImageLink2(imageObj,i);
+		  }
+     	  else
+     	  {
+     	  		 console.log("devraj kuruva -----",i);
+     	  		 generateImageLink(imageObj,0)
+     	  }
+		});
+	}
+	else
+	{
+		i++;
+		if(i < 15)
+		{
+			addImageLink2(imageObj,i);
+		}
+		else
+     	{
+     	 	console.log("devraj kuruva -----",i);
+     	    generateImageLink(imageObj,0)
+     	}
+	}
+}
+function generateImageLink(imageObj,i)
+{
+	if((imageObj[i].url.indexOf("http://kannadaprabha.com") == "") || (imageObj[i].url.indexOf("http://kannada.oneindia.in") == ""))
+	{
+		console.log("generateImageLink start 1 -----",i);
+		var filename= "temp/kp";
+		filename = filename.concat(i);
+		filename = filename.concat(".html");
+		console.log(filename);
+		fs.readFile(filename, function(err, data){
+			console.log("generateImageLink start 2 -----",i);
+			 var kp_reg;
+			 if(imageObj[i].url.indexOf("http://kannadaprabha.com") == "")
+			 {
+			 	kp_reg = "http://media.kannadaprabha.com/../Images/article/.*jpg";	
+			 }
+			 else if((imageObj[i].url.indexOf("http://kannada.oneindia.in") == ""))	
+			 {
+			 	//http://kannada.oneindia.in/img/2014/02/16-16-narendra-modi-in-himacha-pradesh.jpg
+			 	kp_reg = "http://kannada.oneindia.in/img/2014/.*jpg";
+			 }
+			// var regex	= new RegExp(kp_reg,"i");
+			// var result = regex.exec(data);
+			var regex = new RegExp(kp_reg, "i");
+  			var result = regex.exec(data);
+			setTimeout(function () {
+			if(result != null)
+			{
+				console.log("generateImageLink start 3 -----",i);
+				console.log(result[0]);
+				//imageObj[i].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
+				i++;
+				if(i < 15)
+			  	{
+				  console.log("generateImageLink kuruva -----",i);
+				  console.log(filename);
+				  imageObj[i-1].image_url = result[0];
+				  generateImageLink(imageObj,i);
+				}
+				else
+				{
+					 console.log("generateImageLink  end 1-----",i);
+				}
+			}
+			else
+			{
+				i++;
+			if(i < 15)
+				{
+		//			imageObj[i-1].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
+					console.log("generateImageLink elses 11 kuruva -----",i);
+					generateImageLink(imageObj,i);
+				}
+				else
+				{
+					// imageObj[i-1].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
+					 console.log("generateImageLink 111 end 2-----",i);
+				}	
+			}
+			},5000);
+		});
+				
+	}
+	else if((imageObj[i].url.indexOf("http://www.prajavani.net") == ""))
+	{
+		console.log("generateImageLink prajavani start 1 -----",i);
+		var filename= "temp/prj";
+		filename = filename.concat(i);
+		filename = filename.concat(".html");
+		console.log(filename);
+		fs.readFile(filename, function(err, data){
+			console.log("generateImageLink prajavani start 2 -----",i);
+			// var kp_reg = "http://media.kannadaprabha.com/../Images/article/.*jpg";	
+			// var regex	= new RegExp(kp_reg,"i");
+			// var result = regex.exec(data);
+			var regex = new RegExp("http://www.prajavani.net/sites/default/files/article_images.[^<]*jpg", "i");
+  			var result = regex.exec(data);
+			setTimeout(function () {
+			if(result != null)
+			{
+				console.log("generateImageLink prajavani startstart 3 -----",i);
+				console.log(result[0]);
+				//imageObj[i].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
+				i++;
+				if(i < 15)
+			  	{
+				  console.log("generateImageLink prajavani kuruva -----",i);
+				  console.log(filename);
+				  imageObj[i-1].image_url = result[0];
+				  generateImageLink(imageObj,i);
+				}
+				else
+				{
+					 console.log("generateImageLink prajavani end 1-----",i);
+				}
+			}
+			else
+			{
+				i++;
+			if(i < 15)
+				{
+		//			imageObj[i-1].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
+					console.log("generateImageLink elses 11 kuruva -----",i);
+					generateImageLink(imageObj,i);
+				}
+				else
+				{
+					// imageObj[i-1].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
+					 console.log("generateImageLink 111 end 2-----",i);
+				}	
+			}
+			},5000);
+		});
+				
+	}
+	else
+	{
+		i++;
+		if(i < 15)
+		{
+			console.log("generateImageLink elses kuruva -----",i);
+			generateImageLink(imageObj,i);
+		}
+		else
+		{
+			 console.log("generateImageLink  end 2-----",i);
+		}
+	}
+}
+function addImageLink(imageObj){
+
+	for(var i =0 ;i< imageObj.length && i<20;i++)	{
+	if((imageObj[i].url.indexOf("http://kannadaprabha.com") == ""))
+		//imageObj[i].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
+		 var reg_ex_url = "http://media.kannadaprabha.com/../Images/article/.*jpg";
+		 var reg_ex = "[0-9]*.html";
+		 getImageLink(link_url,reg_ex_url,reg_ex,imageObj[i],i,function(response){
+	//		console.log("after callback:-",response);
+	//		imageObj[i].image_url = response;
+			imageObj[i].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
+		//	imageObj[i].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
+		});
+	}
+	// else
+	// {
+
+	// }
+}
+
+///
+function getImageLink(url_link,img_reg_expr,url_file_reg,imageObj,i,callback)	{
+	//var regex = new RegExp(url_file_reg, "i");
+	//var result = regex.exec(imageObj.url);
+	//console.log(result);
+	var filename= "kp";
+	filename = filename.concat(i);
+//	console.log(filename);
+	var link_url = "http://www.kannadaprabha.com/latest-news/%E0%B2%B2%E0%B3%8B%E0%B2%95%E0%B2%B8%E0%B2%AD%E0%B2%BE-%E0%B2%9A%E0%B3%81%E0%B2%A8%E0%B2%BE%E0%B2%B5%E0%B2%A3%E0%B3%86%E0%B2%97%E0%B3%86-%E0%B2%8E%E0%B2%8E%E0%B2%AA%E0%B2%BF-%E0%B2%B8%E0%B2%9C%E0%B3%8D%E0%B2%9C%E0%B3%81/176175.html"
+//	var link_url = 	 imageObj.url;
+	var file = fs.createWriteStream(filename);
+	var request = http.get(link_url, function(response) {
+		response.pipe(file);
+	});
+	setTimeout(function () {
+		fs.readFile(filename, function(err, data){
+			var regex1 = new RegExp(img_reg_expr, "i");
+			var result = regex1.exec(data);
+			if(result != null)
+			{
+			console.log(result[0]);
+	//		fs.unlinkSync(filename);
+	//		imageObj.image_url = result[0];
+			callback && callback(result[0]);
+			}
+		});
+	},1000);
 }
 
 
@@ -2052,3 +2307,5 @@ function getHassanfeed()
 });
 }
 }
+
+
