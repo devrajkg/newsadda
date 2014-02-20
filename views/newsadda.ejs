@@ -14,8 +14,8 @@
 <body onload = "onload_init()">
 
 <script>
-//var socket = io.connect('http://ekshana.elasticbeanstalk.com');
-var socket = io.connect('http://localhost:3000');
+var socket = io.connect('http://ekshana.elasticbeanstalk.com');
+//var socket = io.connect('http://localhost:3000');
 var address = new Array();
 socket.on('no_of_clicks', function(message){
 				console.log('received message:', message);
@@ -62,17 +62,20 @@ function showPosition(position)
     });   
 }
 
+
 function printtHeadlines(message){
 	for(var i=0;i<20;i++)	{
 		var oNewP = document.getElementById("middlecontainer");
-		var elem = document.createElement("img");
-		elem.setAttribute("src", message[i].image_url);
-		elem.setAttribute("height", "70");
-		elem.setAttribute("width", "70");
-		elem.setAttribute("alt", "Flower");
-		elem.setAttribute("style", "float:left;margin:0 5px 0 0");
-		oNewP.appendChild(elem);
-
+		if(message[i].image_url != null)	
+		{
+			var elem = document.createElement("img");
+			elem.setAttribute("src", message[i].image_url);
+			elem.setAttribute("height", "70");
+			elem.setAttribute("width", "70");
+			elem.setAttribute("alt", "Flower");
+			elem.setAttribute("style", "float:left;margin:0 5px 0 0");
+			oNewP.appendChild(elem);
+		}
 	    var str = message[i].title;
 		var result = str.link(message[i].url);
 		oNewP.innerHTML += result.bold().fontsize(3);
@@ -86,10 +89,11 @@ function printtHeadlines(message){
 		}
 		oNewP.innerHTML += " ";
 		oNewP.innerHTML += message[i].summary.substring(0,400).fontsize(2);
-		oNewP.innerHTML += "<br><br>";
-		
-
-
+		oNewP.innerHTML += "<br>";
+		if(message[i].image_url == null)
+		{
+			oNewP.innerHTML += "<br>";
+		}
     } 
 }
 

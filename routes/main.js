@@ -2,6 +2,11 @@ var http = require('http');
 var fs = require('fs');
 var parser = require('rssparser');
 var options = {};
+var time_10_min = 600000;
+var time_1_hour = 3600000;
+var time_1_day  = 86400000;
+var time_1_min = 60000;
+var time_5_min = 300000;
 var prajavani = {
 		"state":"http://www.prajavani.net/taxonomy/term/30/all/feed",
 		"national":"http://www.prajavani.net/taxonomy/term/31/all/feed",
@@ -182,11 +187,14 @@ weblinks[0] = udayavani.karnataka;
 weblinks[1] = kannadaprabha.LatestNews;
 weblinks[2] = others.thatskannada;
 weblinks[3] = prajavani.national;
-weblinks[4] = udayavani.national;
-//weblinks[5] = kannadaprabha.TopNews;
-////weblinks[7] = kannadaprabha.Politics;
-//weblinks[7] = others.suvarnanews;
-	
+weblinks[4]= udayavani.national;
+weblinks[5] = kannadaprabha.TopNews;
+weblinks[6] = kannadaprabha.Politics;
+weblinks[7] = prajavani.state;
+weblinks[8] = kannadaprabha.Nation;
+weblinks[9] = udayavani.rajya;
+weblinks[10] = udayavani.rashtriya;
+
 link_count = weblinks.length;
 	// for (var i=0; i < weblinks.length; i++) {
  //   feedlinks[i] = weblinks[i]; }
@@ -256,7 +264,7 @@ foreign[2] = kannadaprabha.HoranaduKannadiga;
 exports.init = function(){
 	no_of_clicks = 0;
 	getfeed(weblinks);
-	 getcolumnsfeed();
+ //    getcolumnsfeed();
 	// getagriculturefeed();
 	// getCommercefeed();
 	// getstatefeed();
@@ -266,36 +274,36 @@ exports.init = function(){
 	// getsportsfeed();
 	// getforeignfeed();
 	// getspecialfeed();
-	getDavanagerefeed();
+	 getDavanagerefeed();
 	// getBangalorefeed();
-	// getShivamoggafeed();
+ //    getShivamoggafeed();
 	//getspecialfeed();
-	//  setInterval(function () {
-	//  getfeed(weblinks);
- //   }, 36000);
-	//  setInterval(function () {
-	//  getcolumnsfeed();
-	// getagriculturefeed();
-	// getCommercefeed();
-	// getstatefeed();
-	// getnationalfeed();
-	// getmoviesfeed();
-	// getsciencefeed();
-	// getsportsfeed();
-	// getforeignfeed();
-	// getspecialfeed();
-	// getDavanagerefeed();
-	// //getBangalorefeed();
-	// getShivamoggafeed();
- //   }, 216000);
+	setInterval(function () {
+	  getfeed(weblinks);
+    }, time_10_min);
+	//setInterval(function () {
+		// getcolumnsfeed();
+		// getagriculturefeed();
+		// getCommercefeed();
+		// getstatefeed();
+		// getnationalfeed();
+		// getmoviesfeed();
+		// getsciencefeed();
+		// getsportsfeed();
+		// getforeignfeed();
+		// getspecialfeed();
+		// getDavanagerefeed();
+		// getBangalorefeed();
+		// getShivamoggafeed();
+     //}, time_1_hour);
 }	
 exports.newsfeed = function(socket){
 
 no_of_clicks++;
 send_no_of_clicks(socket);
  	sendFeed(socket);
- 	sendcolumnFeed(socket);
- 	//sendDavanagereFeed(socket);
+ 	//sendcolumnFeed(socket);
+ 	sendDavanagereFeed(socket);
 	//doColumnist(socket);
   // setInterval(function () {
   // 	//doQuery(socket);
@@ -369,7 +377,7 @@ function sendFeed(socket)
 {
 	console.log("Inside Start sendFeed function");
    if(feedready == 1)   {
-   	   	socket.emit('message',finalObj);
+   	   	socket.emit('message',finalObj.slice(0,20));
    }
 }
 function send_no_of_clicks(socket)
@@ -380,7 +388,7 @@ function sendCommerceFeed(socket)
 {
 	console.log("Inside Start sendCommerceFeed function");
    if(feedCommerceready == 1)   {
-   	   	socket.emit('message',finalCommerceObj);
+   	   	socket.emit('message',finalCommerceObj.slice(0,20));
    }
 }
 
@@ -388,42 +396,42 @@ function sendstateFeed(socket)
 {
 	console.log("Inside Start sendCommerceFeed function");
    if(feedstateready == 1)   {
-   	   	socket.emit('message',finalstateObj);
+   	   	socket.emit('message',finalstateObj.slice(0,20));
    }
 }
 function sendnationalFeed(socket)
 {
 	console.log("Inside Start sendCommerceFeed function");
    if(feednationalready == 1)   {
-   	   	socket.emit('message',finalnationalObj);
+   	   	socket.emit('message',finalnationalObj.slice(0,20));
    }
 }
 function sendsportsFeed(socket)
 {
 	console.log("Inside Start sendCommerceFeed function");
    if(feedsportsready == 1)   {
-   	   	socket.emit('message',finalsportsObj);
+   	   	socket.emit('message',finalsportsObj.slice(0,20));
    }
 }
 function sendmoviesFeed(socket)
 {
 	console.log("Inside Start sendCommerceFeed function");
    if(feedmoviesready == 1)   {
-   	   	socket.emit('message',finalmoviesObj);
+   	   	socket.emit('message',finalmoviesObj.slice(0,20));
    }
 }
 function sendforeignFeed(socket)
 {
 	console.log("Inside Start sendCommerceFeed function");
    if(feedforeignready == 1)   {
-   	   	socket.emit('message',finalforeignObj);
+   	   	socket.emit('message',finalforeignObj.slice(0,20));
    }
 }
 function sendscienceFeed(socket)
 {
 	console.log("Inside Start sendCommerceFeed function");
    if(feedCommerceready == 1)   {
-   	   	socket.emit('message',finalscienceObj);
+   	   	socket.emit('message',finalscienceObj.slice(0,20));
    }
 }
 
@@ -431,20 +439,20 @@ function sendcolumnFeed(socket)
 {
 	console.log("Inside Start sendcolumnFeed function");
    if(feedcolumnready == 1)   {
-   	   	socket.emit('columnist',finalcolumnObj);
+   	   	socket.emit('columnist',finalcolumnObj.slice(0,10));
    }
 }
 
 function sendagricultureFeed(socket)
 {
    if(feedagricultureready == 1)   {
-   	   	socket.emit('message',finalagricultureObj);
+   	   	socket.emit('message',finalagricultureObj.slice(0,20));
    }
 }
 function sendspecialFeed(socket)
 {
    if(feedspecialready == 1)   {
-   	   	socket.emit('message',finalspecialObj);
+   	   	socket.emit('message',finalspecialObj.slice(0,20));
    }
 }
 
@@ -754,7 +762,7 @@ function getfeed(feedlinks)
 	    	finalObj = finalObj.concat(out.items[2]);
 	    	finalObj = finalObj.concat(out.items[4]);
 	    	finalObj = finalObj.concat(out.items[5]);
-	    	finalObj = finalObj.concat(out.items[6]);
+	    	// finalObj = finalObj.concat(out.items[6]);
    	}
    	console.log("Inside Start getfeed function 5555");
    if(j == feedlinks.length)  {
@@ -766,14 +774,11 @@ function getfeed(feedlinks)
 });
 }
 }
-//http://www.kannadaprabha.com/latest-news/%E0%B2%AA%E0%B3%8D%E0%B2%B0%E0%B3%87%E0%B2%AE-%E0%B2%B5%E0%B2%BF%E0%B2%B5%E0%B2%BE%E0%B2%A6-%E0%B2%B8%E0%B2%BF%E0%B2%8E%E0%B2%82%E0%B2%97%E0%B3%86-%E0%B2%AA%E0%B2%A4%E0%B3%8D%E0%B2%B0-%E0%B2%AC%E0%B2%B0%E0%B3%86%E0%B2%A6-%E0%B2%B0%E0%B2%BE%E0%B2%AE%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B3%8D/176376.html
-//http://kannadaprabha.com/latest-news/ಪ್ರೇಮ-ವಿವಾದ-ಸಿಎಂಗೆ-ಪತ್ರ-ಬರೆದ-ರಾಮದಾಸ್/176376.html
 function addImageLink2(imageObj,i)
 {
-	if((imageObj[i].url.indexOf("http://kannadaprabha.com") == "") || (imageObj[i].url.indexOf("http://kannada.oneindia.in") == ""))
+	if((imageObj[i].url.indexOf("http://kannadaprabha.com") == "") || (imageObj[i].url.indexOf("http://kannada.oneindia.in") == "") || (imageObj[i].url.indexOf("http://www.prajavani.net") == ""))
 	{
      	//var link_url = "http://www.kannadaprabha.com/latest-news/%E0%B2%B2%E0%B3%8B%E0%B2%95%E0%B2%B8%E0%B2%AD%E0%B2%BE-%E0%B2%9A%E0%B3%81%E0%B2%A8%E0%B2%BE%E0%B2%B5%E0%B2%A3%E0%B3%86%E0%B2%97%E0%B3%86-%E0%B2%8E%E0%B2%8E%E0%B2%AA%E0%B2%BF-%E0%B2%B8%E0%B2%9C%E0%B3%8D%E0%B2%9C%E0%B3%81/176175.html"
-	//	var link_url = "http://www.kannadaprabha.com/top-news/ರಾಹುಲ್-ಮಾತು-ನೋಡಲು-ಕೇಳಲು-ಚೆಂದ-ಆದರೆ/176269.html"
 		var link_url;
 		link_url = imageObj[i].url;
 		if((imageObj[i].url.indexOf("http://kannadaprabha.com") == ""))
@@ -788,35 +793,7 @@ function addImageLink2(imageObj,i)
 		var request = http.get(link_url, function(response) {
 		  response.pipe(file);
 		  i++;
-		  if(i < 15)
-		  {
-			  console.log("dayasudhan kuruva -----",i);
-			  console.log(filename);
-			  addImageLink2(imageObj,i);
-		  }
-     	  else
-     	  {
-     	  		 console.log("devraj kuruva -----",i);
-     	  		 generateImageLink(imageObj,0)
-     	  }
-		});
-	}
-	else if((imageObj[i].url.indexOf("http://www.prajavani.net") == ""))
-	{
-     	//var link_url = "http://www.kannadaprabha.com/latest-news/%E0%B2%B2%E0%B3%8B%E0%B2%95%E0%B2%B8%E0%B2%AD%E0%B2%BE-%E0%B2%9A%E0%B3%81%E0%B2%A8%E0%B2%BE%E0%B2%B5%E0%B2%A3%E0%B3%86%E0%B2%97%E0%B3%86-%E0%B2%8E%E0%B2%8E%E0%B2%AA%E0%B2%BF-%E0%B2%B8%E0%B2%9C%E0%B3%8D%E0%B2%9C%E0%B3%81/176175.html"
-	//	var link_url = "http://www.kannadaprabha.com/top-news/ರಾಹುಲ್-ಮಾತು-ನೋಡಲು-ಕೇಳಲು-ಚೆಂದ-ಆದರೆ/176269.html"
-		//var link_url = "http://www.kannadaprabha.com/latest-news/%E0%B2%AA%E0%B3%8D%E0%B2%B0%E0%B3%87%E0%B2%AE-%E0%B2%B5%E0%B2%BF%E0%B2%B5%E0%B2%BE%E0%B2%A6-%E0%B2%B8%E0%B2%BF%E0%B2%8E%E0%B2%82%E0%B2%97%E0%B3%86-%E0%B2%AA%E0%B2%A4%E0%B3%8D%E0%B2%B0-%E0%B2%AC%E0%B2%B0%E0%B3%86%E0%B2%A6-%E0%B2%B0%E0%B2%BE%E0%B2%AE%E0%B2%A6%E0%B2%BE%E0%B2%B8%E0%B3%8D/176376.html"
-		var link_url = imageObj[i].url;
-		//link_url = link_url.replace("http://kannadaprabha.com","http://www.kannadaprabha.com");
-		console.log(link_url);
-		var filename= "temp/prj";
-		filename = filename.concat(i);
-		filename = filename.concat(".html");
-		var file = fs.createWriteStream(filename);
-		var request = http.get(link_url, function(response) {
-		  response.pipe(file);
-		  i++;
-		  if(i < 15)
+		  if(i < 20)
 		  {
 			  console.log("dayasudhan kuruva -----",i);
 			  console.log(filename);
@@ -832,7 +809,12 @@ function addImageLink2(imageObj,i)
 	else
 	{
 		i++;
-		if(i < 15)
+		if(imageObj[i-1].url.indexOf("http://www.udayavani.com") == ""){
+			console.log("udayavani-------------------");
+			console.log(imageObj[i-1].image_url);
+			console.log("udayavani+++++++++++++++++++");
+		}
+		if(i < 20)
 		{
 			addImageLink2(imageObj,i);
 		}
@@ -845,7 +827,7 @@ function addImageLink2(imageObj,i)
 }
 function generateImageLink(imageObj,i)
 {
-	if((imageObj[i].url.indexOf("http://kannadaprabha.com") == "") || (imageObj[i].url.indexOf("http://kannada.oneindia.in") == ""))
+	if((imageObj[i].url.indexOf("http://kannadaprabha.com") == "") || (imageObj[i].url.indexOf("http://kannada.oneindia.in") == "") || (imageObj[i].url.indexOf("http://www.prajavani.net") == ""))
 	{
 		console.log("generateImageLink start 1 -----",i);
 		var filename= "temp/kp";
@@ -857,12 +839,22 @@ function generateImageLink(imageObj,i)
 			 var kp_reg;
 			 if(imageObj[i].url.indexOf("http://kannadaprabha.com") == "")
 			 {
-			 	kp_reg = "http://media.kannadaprabha.com/../Images/article/.*jpg";	
+			 	imageObj[i].image_url = "http://media.kannadaprabha.com/images/banner/kp_logo.jpg"
+			 	kp_reg = "http://media.kannadaprabha.com/../Images/article/.[^<]*(jpg|gif|png)";	
 			 }
 			 else if((imageObj[i].url.indexOf("http://kannada.oneindia.in") == ""))	
 			 {
+
+			 	imageObj[i].image_url = "http://kannada.oneindia.in/img/kannada-oneindia-logo.jpg";
 			 	//http://kannada.oneindia.in/img/2014/02/16-16-narendra-modi-in-himacha-pradesh.jpg
-			 	kp_reg = "http://kannada.oneindia.in/img/2014/.*jpg";
+			 	kp_reg = "http://kannada.oneindia.in/img/2014/.[^<]*(jpg|gif|png)";
+			 }
+			 else if((imageObj[i].url.indexOf("http://www.prajavani.net") == ""))
+			 {
+			 	imageObj[i].image_url = "http://www.prajavani.net/sites/default/files/pv.png";
+			 	//http://www.prajavani.net/sites/default/files/images/pvmast.png
+			 	//http://www.prajavani.net/sites/default/files/field/image/modi.jpg
+			 	kp_reg = "http://www.prajavani.net/sites/default/files/.*/.[^<]*(jpg|gif)";
 			 }
 			// var regex	= new RegExp(kp_reg,"i");
 			// var result = regex.exec(data);
@@ -875,7 +867,7 @@ function generateImageLink(imageObj,i)
 				console.log(result[0]);
 				//imageObj[i].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
 				i++;
-				if(i < 15)
+				if(i < 20)
 			  	{
 				  console.log("generateImageLink kuruva -----",i);
 				  console.log(filename);
@@ -890,59 +882,7 @@ function generateImageLink(imageObj,i)
 			else
 			{
 				i++;
-			if(i < 15)
-				{
-		//			imageObj[i-1].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
-					console.log("generateImageLink elses 11 kuruva -----",i);
-					generateImageLink(imageObj,i);
-				}
-				else
-				{
-					// imageObj[i-1].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
-					 console.log("generateImageLink 111 end 2-----",i);
-				}	
-			}
-			},5000);
-		});
-				
-	}
-	else if((imageObj[i].url.indexOf("http://www.prajavani.net") == ""))
-	{
-		console.log("generateImageLink prajavani start 1 -----",i);
-		var filename= "temp/prj";
-		filename = filename.concat(i);
-		filename = filename.concat(".html");
-		console.log(filename);
-		fs.readFile(filename, function(err, data){
-			console.log("generateImageLink prajavani start 2 -----",i);
-			// var kp_reg = "http://media.kannadaprabha.com/../Images/article/.*jpg";	
-			// var regex	= new RegExp(kp_reg,"i");
-			// var result = regex.exec(data);
-			var regex = new RegExp("http://www.prajavani.net/sites/default/files/article_images.[^<]*jpg", "i");
-  			var result = regex.exec(data);
-			setTimeout(function () {
-			if(result != null)
-			{
-				console.log("generateImageLink prajavani startstart 3 -----",i);
-				console.log(result[0]);
-				//imageObj[i].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
-				i++;
-				if(i < 15)
-			  	{
-				  console.log("generateImageLink prajavani kuruva -----",i);
-				  console.log(filename);
-				  imageObj[i-1].image_url = result[0];
-				  generateImageLink(imageObj,i);
-				}
-				else
-				{
-					 console.log("generateImageLink prajavani end 1-----",i);
-				}
-			}
-			else
-			{
-				i++;
-			if(i < 15)
+			if(i < 20)
 				{
 		//			imageObj[i-1].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
 					console.log("generateImageLink elses 11 kuruva -----",i);
@@ -961,7 +901,21 @@ function generateImageLink(imageObj,i)
 	else
 	{
 		i++;
-		if(i < 15)
+			if(imageObj[i-1].url.indexOf("http://www.udayavani.com") == ""){
+				var kp_reg;
+				kp_reg = "http://www.udayavani.com";
+				var regex = new RegExp(kp_reg, "i");
+  				var result = regex.exec(imageObj[i-1].image_url);
+  				if(result == null)
+  				{
+  					imageObj[i-1].image_url = "http://www.udayavani.com/images/udayvani-logo.jpg";
+  				}
+				console.log("udayavani-------------------");
+				//imageObj[i-1].image_url = '$';
+				console.log(imageObj[i-1].image_url);
+				console.log("udayavani+++++++++++++++++++");
+			}
+		if(i < 20)
 		{
 			console.log("generateImageLink elses kuruva -----",i);
 			generateImageLink(imageObj,i);
@@ -972,56 +926,6 @@ function generateImageLink(imageObj,i)
 		}
 	}
 }
-function addImageLink(imageObj){
-
-	for(var i =0 ;i< imageObj.length && i<20;i++)	{
-	if((imageObj[i].url.indexOf("http://kannadaprabha.com") == ""))
-		//imageObj[i].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
-		 var reg_ex_url = "http://media.kannadaprabha.com/../Images/article/.*jpg";
-		 var reg_ex = "[0-9]*.html";
-		 getImageLink(link_url,reg_ex_url,reg_ex,imageObj[i],i,function(response){
-	//		console.log("after callback:-",response);
-	//		imageObj[i].image_url = response;
-			imageObj[i].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
-		//	imageObj[i].image_url = "http://media.kannadaprabha.com/Images/article/2014/2/15/kejriwal2a.jpg";
-		});
-	}
-	// else
-	// {
-
-	// }
-}
-
-///
-function getImageLink(url_link,img_reg_expr,url_file_reg,imageObj,i,callback)	{
-	//var regex = new RegExp(url_file_reg, "i");
-	//var result = regex.exec(imageObj.url);
-	//console.log(result);
-	var filename= "kp";
-	filename = filename.concat(i);
-//	console.log(filename);
-	var link_url = "http://www.kannadaprabha.com/latest-news/%E0%B2%B2%E0%B3%8B%E0%B2%95%E0%B2%B8%E0%B2%AD%E0%B2%BE-%E0%B2%9A%E0%B3%81%E0%B2%A8%E0%B2%BE%E0%B2%B5%E0%B2%A3%E0%B3%86%E0%B2%97%E0%B3%86-%E0%B2%8E%E0%B2%8E%E0%B2%AA%E0%B2%BF-%E0%B2%B8%E0%B2%9C%E0%B3%8D%E0%B2%9C%E0%B3%81/176175.html"
-//	var link_url = 	 imageObj.url;
-	var file = fs.createWriteStream(filename);
-	var request = http.get(link_url, function(response) {
-		response.pipe(file);
-	});
-	setTimeout(function () {
-		fs.readFile(filename, function(err, data){
-			var regex1 = new RegExp(img_reg_expr, "i");
-			var result = regex1.exec(data);
-			if(result != null)
-			{
-			console.log(result[0]);
-	//		fs.unlinkSync(filename);
-	//		imageObj.image_url = result[0];
-			callback && callback(result[0]);
-			}
-		});
-	},1000);
-}
-
-
 
 function getDistrictfeed(socket,district)
 {
@@ -1074,7 +978,7 @@ var feedaBangaloreready = 0;
 function sendBangaloreFeed(socket)
 {
    if(feedBangaloreready == 1)   {
-   	   	socket.emit('district',finalBangaloreObj);
+   	   	socket.emit('district',finalBangaloreObj.slice(0,10));
    }
 }
 
@@ -1242,7 +1146,7 @@ var feedaShivamoggaready = 0;
 function sendShivamoggaFeed(socket)
 {
    if(feedShivamoggaready == 1)   {
-   	   	socket.emit('district',finalShivamoggaObj);
+   	   	socket.emit('district',finalShivamoggaObj.slice(0,10));
    }
 }
 
@@ -1572,7 +1476,7 @@ function getKodagufeed()
 }
 var finalChikmagalurObj =[];	
 var feedaChikmagalurready = 0;
-function sendKodaguFeed(socket)
+function sendChikmagalurFeed(socket)
 {
    if(feedChikmagalurready == 1)   {
    	   	socket.emit('district',finalChikmagalurObj);
@@ -2024,7 +1928,7 @@ function getGadagfeed()
 function sendDavanagereFeed(socket)
 {
    if(feedDavanagereready == 1)   {
-   	   	socket.emit('district',finalDavanagereObj);
+   	   	socket.emit('district',finalDavanagereObj.slice(0,10));
    }
 }
 
