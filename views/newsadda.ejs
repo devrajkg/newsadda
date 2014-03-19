@@ -67,16 +67,16 @@ function showPosition(position)
 function printtHeadlines(message){
 	for(var i=0;i<20;i++)	{
 		var oNewP = document.getElementById("middlecontainer");
-		if(message[i].image_url != null)	
-		{
-			var elem = document.createElement("img");
-			elem.setAttribute("src", message[i].image_url);
-			elem.setAttribute("height", "70");
-			elem.setAttribute("width", "70");
-			elem.setAttribute("alt", "Flower");
-			elem.setAttribute("style", "float:left;margin:0 5px 0 0");
-			oNewP.appendChild(elem);
-		}
+		// if(message[i].image_url != null)	
+		// {
+		// 	var elem = document.createElement("img");
+		// 	elem.setAttribute("src", message[i].image_url);
+		// 	elem.setAttribute("height", "70");
+		// 	elem.setAttribute("width", "70");
+		// 	elem.setAttribute("alt", "Flower");
+		// 	elem.setAttribute("style", "float:left;margin:0 5px 0 0");
+		// 	oNewP.appendChild(elem);
+		// }
 	    var str = message[i].title;
 		var result = str.link(message[i].url);
 		oNewP.innerHTML += result.bold().fontsize(3);

@@ -768,7 +768,7 @@ function getfeed(feedlinks)
    if(j == feedlinks.length)  {
    	console.log("Inside Start getfeed function 3333");
    	finalObj = arrysort(finalObj);
-   	addImageLink2(finalObj,0);
+   //	addImageLink2(finalObj,0);
    	feedready = 1;
    }
 });
