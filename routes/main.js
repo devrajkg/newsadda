@@ -264,38 +264,38 @@ foreign[2] = kannadaprabha.HoranaduKannadiga;
 exports.init = function(){
 	no_of_clicks = 0;
 	getfeed(weblinks);
- //    getcolumnsfeed();
-	// getagriculturefeed();
-	// getCommercefeed();
-	// getstatefeed();
-	// getnationalfeed();
-	// getmoviesfeed();
-	// getsciencefeed();
-	// getsportsfeed();
-	// getforeignfeed();
-	// getspecialfeed();
-	 getDavanagerefeed();
-	// getBangalorefeed();
- //    getShivamoggafeed();
-	//getspecialfeed();
+    getcolumnsfeed();
+	getagriculturefeed();
+	getCommercefeed();
+	getstatefeed();
+	getnationalfeed();
+	getmoviesfeed();
+	getsciencefeed();
+	getsportsfeed();
+	getforeignfeed();
+	getspecialfeed();
+	getDavanagerefeed();
+	getBangalorefeed();
+    getShivamoggafeed();
+	getspecialfeed();
 	setInterval(function () {
 	  getfeed(weblinks);
     }, time_10_min);
-	//setInterval(function () {
-		// getcolumnsfeed();
-		// getagriculturefeed();
-		// getCommercefeed();
-		// getstatefeed();
-		// getnationalfeed();
-		// getmoviesfeed();
-		// getsciencefeed();
-		// getsportsfeed();
-		// getforeignfeed();
-		// getspecialfeed();
-		// getDavanagerefeed();
-		// getBangalorefeed();
-		// getShivamoggafeed();
-     //}, time_1_hour);
+	setInterval(function () {
+		getcolumnsfeed();
+		getagriculturefeed();
+		getCommercefeed();
+		getstatefeed();
+		getnationalfeed();
+		getmoviesfeed();
+		getsciencefeed();
+		getsportsfeed();
+		getforeignfeed();
+		getspecialfeed();
+		getDavanagerefeed();
+		getBangalorefeed();
+		getShivamoggafeed();
+     }, time_1_hour);
 }	
 exports.newsfeed = function(socket){
 
@@ -768,7 +768,7 @@ function getfeed(feedlinks)
    if(j == feedlinks.length)  {
    	console.log("Inside Start getfeed function 3333");
    	finalObj = arrysort(finalObj);
-   	addImageLink2(finalObj,0);
+   //	addImageLink2(finalObj,0);
    	feedready = 1;
    }
 });
