@@ -302,8 +302,8 @@ exports.newsfeed = function(socket){
 no_of_clicks++;
 send_no_of_clicks(socket);
  	sendFeed(socket);
- 	//sendcolumnFeed(socket);
- 	sendDavanagereFeed(socket);
+ 	sendcolumnFeed(socket);
+ //	sendDavanagereFeed(socket);
 	//doColumnist(socket);
   // setInterval(function () {
   // 	//doQuery(socket);
