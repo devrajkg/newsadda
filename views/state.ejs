@@ -14,7 +14,7 @@
 <body onload = "onload_init()">
 
 <script>
-var socket = io.connect('http://newsadda.herokuapp.com');
+var socket = io.connect('http://newsadda.herokuapp.com/state');
 //var socket = io.connect('http://localhost:3000/');
 var address = new Array();
 socket.on('no_of_clicks', function(message){
